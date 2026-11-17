@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -456,15 +457,21 @@ footer {
 </footer>
 
 <!-- SUPABASE LIBRARY -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 // SUPABASE CONNECTION
 
-const SUPABASE_URL = "https://xnykeattlvxfevbfrrml.supabase.co";
+const SUPABASE_URL =
+  "https://xnykeattlvxfevbfrrml.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_SmeD_22mi0H-4ISHrk2jjA_ZSnnVnFb";
+const SUPABASE_KEY =
+  "sb_publishable_SmeD_22mi0H-4ISHrk2jjA_ZSnnVnFb";
+
+const APP_URL =
+  "https://elite-club-red.vercel.app";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
@@ -502,7 +509,7 @@ function goBack() {
 }
 
 
-// SHOW SUCCESS OR ERROR MESSAGE
+// MESSAGE DISPLAY
 
 function showMessage(elementId, message, type) {
   const element = document.getElementById(elementId);
@@ -516,7 +523,9 @@ function showMessage(elementId, message, type) {
 function setLoading(form, loading) {
   const button = form.querySelector("button[type='submit']");
   button.disabled = loading;
-  button.textContent = loading ? "Please wait..." : button.dataset.original;
+  button.textContent = loading
+    ? "Please wait..."
+    : button.dataset.original;
 }
 
 
@@ -526,6 +535,7 @@ async function registerPassenger(event) {
   event.preventDefault();
 
   const form = event.target;
+
   const name = document.getElementById("pName").value.trim();
   const email = document.getElementById("pEmail").value.trim();
   const phone = document.getElementById("pPhone").value.trim();
@@ -545,7 +555,7 @@ async function registerPassenger(event) {
           phone: phone,
           role: "passenger"
         },
-        emailRedirectTo: window.location.origin
+        emailRedirectTo: APP_URL
       }
     });
 
@@ -554,13 +564,13 @@ async function registerPassenger(event) {
     if (data.session) {
       showMessage(
         "pRegisterMessage",
-        "Your passenger account has been created successfully. You can now log in.",
+        "Your passenger account has been created successfully.",
         "success"
       );
     } else {
       showMessage(
         "pRegisterMessage",
-        "Registration received! Please check your email and confirm your account before logging in.",
+        "Registration received! Please check your email and confirm your account. Then return to ELITE CLUB and log in.",
         "success"
       );
     }
@@ -607,7 +617,7 @@ async function registerDriver(event) {
           vehicle_category: category,
           vehicle_registration: plate
         },
-        emailRedirectTo: window.location.origin
+        emailRedirectTo: APP_URL
       }
     });
 
@@ -616,13 +626,13 @@ async function registerDriver(event) {
     if (data.session) {
       showMessage(
         "dRegisterMessage",
-        "Driver account created. Your driver profile will require approval before you can accept rides.",
+        "Driver account created. Your driver profile will require approval before accepting rides.",
         "success"
       );
     } else {
       showMessage(
         "dRegisterMessage",
-        "Driver registration received! Please confirm your email. Your driver profile will require approval before you can accept rides.",
+        "Driver registration received! Please confirm your email. Your driver profile will require approval before accepting rides.",
         "success"
       );
     }
@@ -645,8 +655,13 @@ async function loginUser(event, expectedRole) {
   const form = event.target;
   const prefix = expectedRole === "passenger" ? "p" : "d";
 
-  const email = document.getElementById(prefix + "LoginEmail").value.trim();
-  const password = document.getElementById(prefix + "LoginPassword").value;
+  const email = document.getElementById(
+    prefix + "LoginEmail"
+  ).value.trim();
+
+  const password = document.getElementById(
+    prefix + "LoginPassword"
+  ).value;
 
   const messageId = prefix + "LoginMessage";
 
@@ -655,10 +670,11 @@ async function loginUser(event, expectedRole) {
   setLoading(form, true);
 
   try {
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: password
-    });
+    const { data, error } =
+      await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
 
     if (error) throw error;
 
@@ -669,7 +685,8 @@ async function loginUser(event, expectedRole) {
 
       throw new Error(
         "This account is not registered as a " +
-        expectedRole + ". Please use the correct login option."
+        expectedRole +
+        ". Please use the correct login option."
       );
     }
 
@@ -690,4 +707,3 @@ async function loginUser(event, expectedRole) {
 
 </body>
 </html>
-
