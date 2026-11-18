@@ -283,236 +283,397 @@ main{padding:32px 13px}
 Premium Rides. Elevated Journeys.
 </footer>
 
+  
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const URL="https://xnykeattlvxfevbfrrml.supabase.co";
-const KEY="sb_publishable_SmeD_22mi0H-4ISHrk2jjA_ZSnnVnFb";
-const ADMIN_EMAIL="sidhusoman52@gmail.com";
-const sb=window.supabase.createClient(URL,KEY);
+const SUPABASE_URL = "https://xnykeattlvxfevbfrrml.supabase.co";
+const SUPABASE_KEY = "sb_publishable_SmeD_22mi0H-4ISHrk2jjA_ZSnnVnFb";
+const ADMIN_EMAIL = "sidhusoman52@gmail.com";
 
-function showForm(id){
-document.getElementById("intro").classList.add("hidden");
-document.getElementById("roles").classList.add("hidden");
-document.querySelectorAll(".form,.dash").forEach(x=>x.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-document.querySelectorAll(".msg").forEach(x=>{x.className="msg";x.textContent=""});
-scrollTo(0,0);
+// Initialize Supabase before any functions use it.
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+function showForm(id) {
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("roles").classList.add("hidden");
+
+  document.querySelectorAll(".form,.dash").forEach(x =>
+    x.classList.remove("active")
+  );
+
+  document.getElementById(id).classList.add("active");
+
+  document.querySelectorAll(".msg").forEach(x => {
+    x.className = "msg";
+    x.textContent = "";
+  });
+
+  window.scrollTo(0, 0);
 }
 
-function backHome(){
-document.querySelectorAll(".form,.dash").forEach(x=>x.classList.remove("active"));
-document.getElementById("intro").classList.remove("hidden");
-document.getElementById("roles").classList.remove("hidden");
-scrollTo(0,0);
+function backHome() {
+  document.querySelectorAll(".form,.dash").forEach(x =>
+    x.classList.remove("active")
+  );
+
+  document.getElementById("intro").classList.remove("hidden");
+  document.getElementById("roles").classList.remove("hidden");
+
+  window.scrollTo(0, 0);
 }
 
-function dashboard(id){
-document.getElementById("intro").classList.add("hidden");
-document.getElementById("roles").classList.add("hidden");
-document.querySelectorAll(".form,.dash").forEach(x=>x.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-scrollTo(0,0);
+function dashboard(id) {
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("roles").classList.add("hidden");
+
+  document.querySelectorAll(".form,.dash").forEach(x =>
+    x.classList.remove("active")
+  );
+
+  document.getElementById(id).classList.add("active");
+
+  window.scrollTo(0, 0);
 }
 
-function msg(id,t,type){
-const e=document.getElementById(id);
-e.textContent=t;
-e.className="msg show "+type;
+function msg(id, message, type) {
+  const element = document.getElementById(id);
+  element.textContent = message;
+  element.className = "msg show " + type;
 }
 
-async function register(e,role){
-e.preventDefault();
-const f=e.target;
-const b=f.querySelector("button");
-const old=b.textContent;
-b.disabled=true;
-b.textContent="Please wait...";
+async function register(event, role) {
+  event.preventDefault();
 
-const v=id=>document.getElementById(id).value.trim();
-const isP=role==="passenger";
+  const form = event.target;
+  const button = form.querySelector("button");
+  const oldText = button.textContent;
 
-const metadata=isP
-?{full_name:v("pName"),phone:v("pPhone"),role:"passenger"}
-:{full_name:v("dName"),phone:v("dPhone"),role:"driver",vehicle_model:v("dVehicle"),vehicle_category:v("dCategory"),vehicle_registration:v("dPlate")};
+  button.disabled = true;
+  button.textContent = "Please wait...";
 
-try{
-const {data,error}=await sb.auth.signUp({
-email:v(isP?"pEmail":"dEmail"),
-password:document.getElementById(isP?"pPassword":"dPassword").value,
-options:{data:metadata,emailRedirectTo:"https://elite-club-red.vercel.app"}
-});
-if(error)throw error;
+  const value = id => document.getElementById(id).value.trim();
+  const isPassenger = role === "passenger";
 
-msg(isP?"pRegisterMsg":"dRegisterMsg",
-data.session?"Account created.":"Registration received. Confirm your email, then log in. Driver accounts require admin approval.",
-"success");
-f.reset();
-}catch(err){
-msg(isP?"pRegisterMsg":"dRegisterMsg",err.message,"error");
-}finally{
-b.disabled=false;
-b.textContent=old;
-}
-}
+  const metadata = isPassenger
+    ? {
+        full_name: value("pName"),
+        phone: value("pPhone"),
+        role: "passenger"
+      }
+    : {
+        full_name: value("dName"),
+        phone: value("dPhone"),
+        role: "driver",
+        vehicle_model: value("dVehicle"),
+        vehicle_category: value("dCategory"),
+        vehicle_registration: value("dPlate")
+      };
 
-async function login(e,role){
-e.preventDefault();
-const f=e.target;
-const b=f.querySelector("button");
-const old=b.textContent;
-b.disabled=true;
-b.textContent="Please wait...";
+  try {
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: value(isPassenger ? "pEmail" : "dEmail"),
+      password: document.getElementById(
+        isPassenger ? "pPassword" : "dPassword"
+      ).value,
+      options: {
+        data: metadata,
+        emailRedirectTo: "https://elite-club-red.vercel.app"
+      }
+    });
 
-const pre=role==="passenger"?"p":role==="driver"?"d":"a";
-const email=document.getElementById(pre+"LoginEmail").value.trim();
-const pass=document.getElementById(pre+"LoginPassword").value;
+    if (error) throw error;
 
-try{
-const {data,error}=await sb.auth.signInWithPassword({email,password:pass});
-if(error)throw error;
-const user=data.user;
+    msg(
+      isPassenger ? "pRegisterMsg" : "dRegisterMsg",
+      data.session
+        ? "Account created successfully."
+        : "Registration received. Please confirm your email, then log in. Driver accounts require admin approval.",
+      "success"
+    );
 
-if(role==="admin"){
-if(email.toLowerCase()!==ADMIN_EMAIL||user.app_metadata?.role!=="admin"){
-await sb.auth.signOut();
-throw Error("This account is not authorised as an administrator.");
-}
-await loadAdmin();
-return;
-}
+    form.reset();
 
-const {data:profile,error:pe}=await sb.from("profiles").select("*").eq("id",user.id).single();
-if(pe)throw pe;
+  } catch (error) {
+    msg(
+      isPassenger ? "pRegisterMsg" : "dRegisterMsg",
+      error.message,
+      "error"
+    );
 
-if(profile.role!==role){
-await sb.auth.signOut();
-throw Error("This account is not registered as a "+role+".");
+  } finally {
+    button.disabled = false;
+    button.textContent = oldText;
+  }
 }
 
-if(role==="passenger"){
-dashboard("pDash");
-document.getElementById("pWelcome").textContent="Welcome, "+(profile.full_name||"Passenger");
-}else{
-dashboard("dDash");
-document.getElementById("dWelcome").textContent="Welcome, "+(profile.full_name||"Driver");
+async function login(event, role) {
+  event.preventDefault();
 
-const s=profile.approval_status||"pending";
-document.getElementById("dStatus").innerHTML=
-"Application status: <span class='pill "+s+"'>"+s.toUpperCase()+"</span><p>"+
-(s==="approved"?"Your application is approved. Ride dispatch will be activated in a later step.":
-s==="rejected"?"Your application was rejected. Please contact support.":
-"Your application is awaiting admin review. You cannot accept rides yet.")+"</p>";
+  const form = event.target;
+  const button = form.querySelector("button");
+  const oldText = button.textContent;
 
-document.getElementById("dVehicleInfo").textContent=profile.vehicle_model||"Not provided";
-document.getElementById("dCategoryInfo").textContent=profile.vehicle_category||"Not provided";
-document.getElementById("dPlateInfo").textContent=profile.vehicle_registration||"Not provided";
+  button.disabled = true;
+  button.textContent = "Please wait...";
+
+  const prefix =
+    role === "passenger" ? "p" :
+    role === "driver" ? "d" : "a";
+
+  const email = document.getElementById(
+    prefix + "LoginEmail"
+  ).value.trim();
+
+  const password = document.getElementById(
+    prefix + "LoginPassword"
+  ).value;
+
+  try {
+    const { data, error } =
+      await supabaseClient.auth.signInWithPassword({
+        email,
+        password
+      });
+
+    if (error) throw error;
+
+    const user = data.user;
+
+    if (role === "admin") {
+      if (
+        email.toLowerCase() !== ADMIN_EMAIL ||
+        user.app_metadata?.role !== "admin"
+      ) {
+        await supabaseClient.auth.signOut();
+        throw new Error(
+          "This account is not authorised as an administrator."
+        );
+      }
+
+      await loadAdmin();
+      return;
+    }
+
+    const { data: profile, error: profileError } =
+      await supabaseClient
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+
+    if (profileError) throw profileError;
+
+    if (profile.role !== role) {
+      await supabaseClient.auth.signOut();
+      throw new Error(
+        "This account is not registered as a " + role + "."
+      );
+    }
+
+    if (role === "passenger") {
+      dashboard("pDash");
+
+      document.getElementById("pWelcome").textContent =
+        "Welcome, " + (profile.full_name || "Passenger");
+
+    } else {
+      dashboard("dDash");
+
+      document.getElementById("dWelcome").textContent =
+        "Welcome, " + (profile.full_name || "Driver");
+
+      const status = ["pending", "approved", "rejected"].includes(
+        profile.approval_status
+      ) ? profile.approval_status : "pending";
+
+      const statusElement = document.getElementById("dStatus");
+      statusElement.replaceChildren();
+
+      const statusLine = document.createElement("div");
+      statusLine.textContent = "Application status: ";
+
+      const pill = document.createElement("span");
+      pill.className = "pill " + status;
+      pill.textContent = status.toUpperCase();
+
+      statusLine.appendChild(pill);
+
+      const description = document.createElement("p");
+      description.textContent =
+        status === "approved"
+          ? "Your application is approved. Ride dispatch will be activated in a later step."
+          : status === "rejected"
+          ? "Your application was rejected. Please contact support."
+          : "Your application is awaiting admin review. You cannot accept rides yet.";
+
+      statusElement.append(statusLine, description);
+
+      document.getElementById("dVehicleInfo").textContent =
+        profile.vehicle_model || "Not provided";
+
+      document.getElementById("dCategoryInfo").textContent =
+        profile.vehicle_category || "Not provided";
+
+      document.getElementById("dPlateInfo").textContent =
+        profile.vehicle_registration || "Not provided";
+    }
+
+  } catch (error) {
+    msg(prefix + "LoginMsg", error.message, "error");
+
+  } finally {
+    button.disabled = false;
+    button.textContent = oldText;
+  }
 }
-}catch(err){
-msg(pre+"LoginMsg",err.message,"error");
-}finally{
-b.disabled=false;
-b.textContent=old;
-}
-}
 
-async function loadAdmin(){
-dashboard("aDash");
+async function loadAdmin() {
+  dashboard("aDash");
 
-const {data:{user},error:ue}=await sb.auth.getUser();
-if(ue||!user||user.app_metadata?.role!=="admin")
-throw Error("Admin permission required. Please sign in again.");
+  const { data: { user }, error: userError } =
+    await supabaseClient.auth.getUser();
 
-const {data,error}=await sb.from("profiles")
-.select("id,full_name,phone,role,approval_status,vehicle_model,vehicle_category,vehicle_registration,created_at")
-.eq("role","driver")
-.order("created_at",{ascending:false});
+  if (
+    userError ||
+    !user ||
+    user.app_metadata?.role !== "admin" ||
+    user.email?.toLowerCase() !== ADMIN_EMAIL
+  ) {
+    throw new Error(
+      "Admin permission required. Please sign in again."
+    );
+  }
 
-if(error){
-msg("aMsg",error.message,"error");
-return;
-}
+  const { data, error } = await supabaseClient
+    .from("profiles")
+    .select(
+      "id,full_name,phone,role,approval_status,vehicle_model,vehicle_category,vehicle_registration,created_at"
+    )
+    .eq("role", "driver")
+    .order("created_at", { ascending: false });
 
-const list=document.getElementById("driverList");
-list.replaceChildren();
+  if (error) {
+    msg("aMsg", error.message, "error");
+    return;
+  }
 
-if(!data.length){
-list.innerHTML='<div class="empty">No driver applications found.</div>';
-return;
-}
+  const list = document.getElementById("driverList");
+  list.replaceChildren();
 
-data.forEach(d=>{
-const row=document.createElement("div");
-row.className="row";
+  if (!data || data.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "No driver applications found.";
+    list.appendChild(empty);
+    return;
+  }
 
-const info=document.createElement("div");
-info.className="info";
+  data.forEach(driver => {
+    const row = document.createElement("div");
+    row.className = "row";
 
-const name=document.createElement("strong");
-name.textContent=d.full_name||"Driver";
+    const info = document.createElement("div");
+    info.className = "info";
 
-const detail=document.createElement("small");
-detail.textContent="Phone: "+(d.phone||"—")+
-" | Vehicle: "+(d.vehicle_model||"—")+
-" | Category: "+(d.vehicle_category||"—")+
-" | Plate: "+(d.vehicle_registration||"—");
+    const name = document.createElement("strong");
+    name.textContent = driver.full_name || "Driver";
 
-const st=document.createElement("span");
-st.className="pill "+(d.approval_status||"pending");
-st.textContent=(d.approval_status||"pending").toUpperCase();
+    const detail = document.createElement("small");
+    detail.textContent =
+      "Phone: " + (driver.phone || "—") +
+      " | Vehicle: " + (driver.vehicle_model || "—") +
+      " | Category: " + (driver.vehicle_category || "—") +
+      " | Plate: " + (driver.vehicle_registration || "—");
 
-info.append(name,detail,st);
+    const status = ["pending", "approved", "rejected"].includes(
+      driver.approval_status
+    ) ? driver.approval_status : "pending";
 
-const actions=document.createElement("div");
-actions.className="actions";
+    const pill = document.createElement("span");
+    pill.className = "pill " + status;
+    pill.textContent = status.toUpperCase();
 
-const yes=document.createElement("button");
-yes.className="small";
-yes.textContent="Approve";
-yes.disabled=d.approval_status==="approved";
-yes.onclick=()=>setApproval(d.id,"approved");
+    info.append(name, detail, pill);
 
-const no=document.createElement("button");
-no.className="small danger";
-no.textContent="Reject";
-no.disabled=d.approval_status==="rejected";
-no.onclick=()=>setApproval(d.id,"rejected");
+    const actions = document.createElement("div");
+    actions.className = "actions";
 
-actions.append(yes,no);
-row.append(info,actions);
-list.append(row);
-});
-}
+    const approveButton = document.createElement("button");
+    approveButton.className = "small";
+    approveButton.textContent = "Approve";
+    approveButton.disabled = status === "approved";
+    approveButton.onclick = () =>
+      setApproval(driver.id, "approved");
 
-async function setApproval(id,status){
-try{
-const {error}=await sb.rpc("set_driver_approval",{
-p_driver_id:id,
-p_status:status
-});
-if(error)throw error;
-msg("aMsg","Driver application updated: "+status.toUpperCase(),"success");
-await loadAdmin();
-}catch(err){
-msg("aMsg",err.message,"error");
-}
-}
+    const rejectButton = document.createElement("button");
+    rejectButton.className = "small danger";
+    rejectButton.textContent = "Reject";
+    rejectButton.disabled = status === "rejected";
+    rejectButton.onclick = () =>
+      setApproval(driver.id, "rejected");
 
-async function logout(){
-await sb.auth.signOut();
-backHome();
+    actions.append(approveButton, rejectButton);
+    row.append(info, actions);
+    list.appendChild(row);
+  });
 }
 
-async function restoreAdmin(){
-const {data:{session}}=await sb.auth.getSession();
-if(session?.user?.app_metadata?.role==="admin"&&
-session.user.email?.toLowerCase()===ADMIN_EMAIL){
-try{await loadAdmin();}
-catch(e){await sb.auth.signOut();}
+async function setApproval(driverId, status) {
+  try {
+    const { error } = await supabaseClient.rpc(
+      "set_driver_approval",
+      {
+        p_driver_id: driverId,
+        p_status: status
+      }
+    );
+
+    if (error) throw error;
+
+    msg(
+      "aMsg",
+      "Driver application updated: " + status.toUpperCase(),
+      "success"
+    );
+
+    await loadAdmin();
+
+  } catch (error) {
+    msg("aMsg", error.message, "error");
+  }
 }
+
+async function logout() {
+  await supabaseClient.auth.signOut();
+  backHome();
 }
+
+async function restoreAdmin() {
+  try {
+    const { data, error } =
+      await supabaseClient.auth.getSession();
+
+    if (error) throw error;
+
+    const session = data.session;
+
+    if (
+      session?.user?.app_metadata?.role === "admin" &&
+      session.user.email?.toLowerCase() === ADMIN_EMAIL
+    ) {
+      await loadAdmin();
+    }
+
+  } catch (error) {
+    console.error("Admin session restore:", error.message);
+  }
+}
+
 restoreAdmin();
 </script>
 </body>
-  </html>
-  
+</html>
