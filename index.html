@@ -3,371 +3,70 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ELITE CLUB | Premium Rides</title>
-
 <style>
-:root {
-  --g:#d6ad60;
-  --bg:#080808;
-  --p:#151515;
-  --m:#aaa;
-  --line:#393127;
-}
-
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
-
-body {
-  background:var(--bg);
-  color:#fff;
-  min-height:100vh;
-}
-
-header {
-  padding:20px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid #292929;
-  gap:12px;
-}
-
-.logo {
-  color:var(--g);
-  font-size:25px;
-  font-weight:bold;
-  letter-spacing:3px;
-}
-
-.tag {
-  color:#aaa;
-  font-size:11px;
-  margin-top:5px;
-  letter-spacing:1px;
-}
-
-.ht {
-  color:var(--g);
-  font-size:12px;
-}
-
-main {
-  max-width:1100px;
-  margin:auto;
-  padding:42px 16px 60px;
-}
-
-.intro {
-  text-align:center;
-  margin-bottom:30px;
-}
-
-.intro h1 {
-  font-size:clamp(28px,5vw,44px);
-  margin-bottom:12px;
-}
-
-.gold {
-  color:var(--g);
-}
-
-p {
-  color:var(--m);
-  line-height:1.6;
-  font-size:14px;
-}
-
-.roles,.grid {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:18px;
-  max-width:850px;
-  margin:auto;
-}
-
-.card,.panel,.form {
-  background:var(--p);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:24px;
-}
-
-.card {
-  text-align:center;
-}
-
-.ico {
-  font-size:40px;
-  margin-bottom:12px;
-}
-
-.card h2 {
-  color:var(--g);
-  margin-bottom:10px;
-}
-
-.card p {
-  margin:10px 0 18px;
-}
-
-button {
-  background:var(--g);
-  color:#111;
-  border:0;
-  border-radius:6px;
-  padding:13px 15px;
-  font-weight:bold;
-  width:100%;
-  cursor:pointer;
-}
-
-button:disabled {
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-.outline {
-  background:transparent;
-  color:var(--g);
-  border:1px solid var(--g);
-  margin-top:12px;
-}
-
-.danger {
-  background:#8d3030;
-  color:white;
-}
-
-.small {
-  width:auto;
-  padding:9px 12px;
-  font-size:12px;
-}
-
-.form {
-  display:none;
-  max-width:480px;
-  margin:24px auto;
-}
-
-.form.active {
-  display:block;
-}
-
-.form h2,.panel h2 {
-  color:var(--g);
-  margin-bottom:8px;
-}
-
-.sub {
-  margin:8px 0 18px;
-}
-
-label {
-  display:block;
-  color:#ddd;
-  font-size:13px;
-  margin:14px 0 7px;
-}
-
-input,select {
-  width:100%;
-  padding:12px;
-  background:#080808;
-  color:white;
-  border:1px solid #444;
-  border-radius:6px;
-  font-size:15px;
-}
-
-.form form button {
-  margin-top:20px;
-}
-
-.switch {
-  text-align:center;
-  margin-top:18px;
-  font-size:13px;
-}
-
-.switch a {
-  color:var(--g);
-  text-decoration:underline;
-  cursor:pointer;
-}
-
-.msg {
-  display:none;
-  padding:12px;
-  margin-top:14px;
-  border-radius:6px;
-  font-size:13px;
-  overflow-wrap:anywhere;
-  line-height:1.5;
-}
-
-.msg.show {
-  display:block;
-}
-
-.success {
-  background:#17331f;
-  color:#b8efc5;
-}
-
-.error {
-  background:#421d1d;
-  color:#ffc1c1;
-}
-
-.dash {
-  display:none;
-}
-
-.dash.active {
-  display:block;
-}
-
-.head {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:20px;
-}
-
-.head h1 {
-  color:var(--g);
-  font-size:clamp(24px,4vw,34px);
-}
-
-.grid {
-  max-width:none;
-}
-
-.panel h2 {
-  font-size:19px;
-  margin-bottom:10px;
-}
-
-.pill {
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:11px;
-  background:#40351f;
-  color:#ffdc8c;
-  margin:8px 0;
-}
-
-.approved {
-  background:#173b25;
-  color:#b8efc5;
-}
-
-.rejected {
-  background:#492020;
-  color:#ffc1c1;
-}
-
-.note {
-  border-left:3px solid var(--g);
-  padding:12px;
-  background:#201b12;
-  color:#d9c49c;
-  font-size:13px;
-  line-height:1.6;
-  margin-top:14px;
-}
-
-.row {
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:12px;
-  flex-wrap:wrap;
-  padding:15px 0;
-  border-top:1px solid #393127;
-}
-
-.info {
-  flex:1;
-  min-width:180px;
-}
-
-.info strong,.info small {
-  display:block;
-}
-
-.info small {
-  color:var(--m);
-  line-height:1.6;
-  margin:5px 0;
-}
-
-.actions {
-  display:flex;
-  gap:7px;
-}
-
-.empty {
-  padding:15px;
-  border:1px dashed #51432d;
-  border-radius:8px;
-  color:var(--m);
-}
-
-.hidden {
-  display:none!important;
-}
-
-footer {
-  text-align:center;
-  padding:24px;
-  border-top:1px solid #292929;
-  color:#777;
-  font-size:12px;
-  line-height:1.8;
-}
-
-@media(max-width:650px) {
-  header {
-    padding:16px 5%;
-  }
-
-  .ht {
-    font-size:10px;
-  }
-
-  main {
-    padding:32px 13px;
-  }
-
-  .roles,.grid {
-    grid-template-columns:1fr;
-  }
-
-  .card,.panel,.form {
-    padding:20px;
-  }
-
-  .actions {
-    width:100%;
-  }
-
-  .actions button {
-    flex:1;
-  }
+:root{--g:#d6ad60;--bg:#080808;--p:#151515;--m:#aaa;--line:#393127}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:var(--bg);color:#fff;min-height:100vh}
+header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292929;gap:12px}
+.logo{color:var(--g);font-size:25px;font-weight:bold;letter-spacing:3px}
+.tag{color:#aaa;font-size:11px;margin-top:5px;letter-spacing:1px}
+.ht{color:var(--g);font-size:12px}
+main{max-width:1100px;margin:auto;padding:38px 16px 60px}
+.intro{text-align:center;margin-bottom:30px}
+.intro h1{font-size:clamp(28px,5vw,44px);margin-bottom:12px}
+.gold{color:var(--g)}
+p{color:var(--m);line-height:1.6;font-size:14px}
+.roles,.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:850px;margin:auto}
+.card,.panel,.form{background:var(--p);border:1px solid var(--line);border-radius:14px;padding:24px}
+.card{text-align:center}
+.ico{font-size:40px;margin-bottom:12px}
+.card h2,.form h2,.panel h2{color:var(--g);margin-bottom:10px}
+.card p{margin:10px 0 18px}
+button{background:var(--g);color:#111;border:0;border-radius:6px;padding:13px 15px;font-weight:bold;width:100%;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.outline{background:transparent;color:var(--g);border:1px solid var(--g);margin-top:12px}
+.danger{background:#8d3030;color:white}
+.small{width:auto;padding:9px 12px;font-size:12px}
+.form{display:none;max-width:480px;margin:24px auto}
+.form.active,.dash.active{display:block}
+.sub{margin:8px 0 18px}
+label{display:block;color:#ddd;font-size:13px;margin:14px 0 7px}
+input,select{width:100%;padding:12px;background:#080808;color:white;border:1px solid #444;border-radius:6px;font-size:15px}
+.form form button{margin-top:20px}
+.switch{text-align:center;margin-top:18px;font-size:13px}
+.switch a{color:var(--g);text-decoration:underline;cursor:pointer}
+.msg{display:none;padding:12px;margin-top:14px;border-radius:6px;font-size:13px;overflow-wrap:anywhere;line-height:1.5}
+.msg.show{display:block}
+.success{background:#17331f;color:#b8efc5}
+.error{background:#421d1d;color:#ffc1c1}
+.dash{display:none}
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.head h1{color:var(--g);font-size:clamp(24px,4vw,34px)}
+.grid{max-width:none}
+.panel h2{font-size:19px}
+.pill{display:inline-block;padding:6px 10px;border-radius:20px;font-size:11px;background:#40351f;color:#ffdc8c;margin:8px 0}
+.approved{background:#173b25;color:#b8efc5}
+.rejected{background:#492020;color:#ffc1c1}
+.note{border-left:3px solid var(--g);padding:12px;background:#201b12;color:#d9c49c;font-size:13px;line-height:1.6;margin-top:14px}
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;padding:15px 0;border-top:1px solid #393127}
+.info{flex:1;min-width:180px}
+.info strong,.info small{display:block}
+.info small{color:var(--m);line-height:1.6;margin:5px 0}
+.actions{display:flex;gap:7px}
+.empty{padding:15px;border:1px dashed #51432d;border-radius:8px;color:var(--m)}
+.hidden{display:none!important}
+footer{text-align:center;padding:24px;border-top:1px solid #292929;color:#777;font-size:12px;line-height:1.8}
+@media(max-width:650px){
+header{padding:16px 5%}.ht{font-size:10px}
+main{padding:30px 13px}
+.roles,.grid{grid-template-columns:1fr}
+.card,.panel,.form{padding:20px}
+.actions{width:100%}.actions button{flex:1}
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -379,142 +78,83 @@ footer {
 </header>
 
 <main>
-
 <section class="intro" id="intro">
   <h1>Welcome to <span class="gold">ELITE CLUB</span></h1>
   <p>Your journey begins here. Choose how you want to use our platform.</p>
 </section>
 
-<!-- HOME -->
-
 <section class="roles" id="roles">
-
   <div class="card">
     <div class="ico">🚘</div>
     <h2>I'm a Passenger</h2>
     <p>Find a ride and plan your next journey.</p>
-    <button onclick="showForm('pLogin')">Continue as Passenger</button>
+    <button type="button" onclick="showForm('pLogin')">Continue as Passenger</button>
   </div>
-
   <div class="card">
     <div class="ico">🚖</div>
     <h2>I'm a Driver</h2>
     <p>Register your vehicle and apply to drive.</p>
-    <button onclick="showForm('dLogin')">Continue as Driver</button>
+    <button type="button" onclick="showForm('dLogin')">Continue as Driver</button>
   </div>
-
   <div class="card">
     <div class="ico">🛡️</div>
     <h2>Administrator</h2>
     <p>Review driver applications securely.</p>
-    <button onclick="showForm('aLogin')">Admin Login</button>
+    <button type="button" onclick="showForm('aLogin')">Admin Login</button>
   </div>
-
 </section>
-
-<!-- PASSENGER LOGIN -->
 
 <section class="form" id="pLogin">
   <h2>Passenger Login</h2>
   <p class="sub">Sign in to your passenger account.</p>
-
   <form onsubmit="login(event,'passenger')">
-    <label>Email</label>
-    <input id="pLoginEmail" type="email" required>
-
-    <label>Password</label>
-    <input id="pLoginPassword" type="password" required>
-
-    <button>Login as Passenger</button>
+    <label>Email</label><input id="pLoginEmail" type="email" required>
+    <label>Password</label><input id="pLoginPassword" type="password" required>
+    <button type="submit">Login as Passenger</button>
   </form>
-
   <div id="pLoginMsg" class="msg"></div>
-
-  <p class="switch">
-    New passenger?
-    <a onclick="showForm('pRegister')">Create account</a>
-  </p>
-
+  <p class="switch">New passenger? <a onclick="showForm('pRegister')">Create account</a></p>
+  <p class="switch"><a onclick="openForgot('pLoginEmail')">Forgot password?</a></p>
   <button class="outline" onclick="backHome()">Back</button>
 </section>
-
-<!-- PASSENGER REGISTER -->
 
 <section class="form" id="pRegister">
   <h2>Create Passenger Account</h2>
   <p class="sub">Join ELITE CLUB.</p>
-
   <form onsubmit="register(event,'passenger')">
-    <label>Full name</label>
-    <input id="pName" required>
-
-    <label>Email</label>
-    <input id="pEmail" type="email" required>
-
-    <label>Phone</label>
-    <input id="pPhone" type="tel" required>
-
-    <label>Password</label>
-    <input id="pPassword" type="password" minlength="8" required>
-
-    <button>Create Passenger Account</button>
+    <label>Full name</label><input id="pName" required>
+    <label>Email</label><input id="pEmail" type="email" required>
+    <label>Phone</label><input id="pPhone" type="tel" required>
+    <label>Password</label><input id="pPassword" type="password" minlength="8" required>
+    <button type="submit">Create Passenger Account</button>
   </form>
-
   <div id="pRegisterMsg" class="msg"></div>
-
-  <p class="switch">
-    Already registered?
-    <a onclick="showForm('pLogin')">Login</a>
-  </p>
-
+  <p class="switch">Already registered? <a onclick="showForm('pLogin')">Login</a></p>
   <button class="outline" onclick="backHome()">Back</button>
 </section>
-
-<!-- DRIVER LOGIN -->
 
 <section class="form" id="dLogin">
   <h2>Driver Login</h2>
   <p class="sub">Access your driver account.</p>
-
   <form onsubmit="login(event,'driver')">
-    <label>Email</label>
-    <input id="dLoginEmail" type="email" required>
-
-    <label>Password</label>
-    <input id="dLoginPassword" type="password" required>
-
-    <button>Login as Driver</button>
+    <label>Email</label><input id="dLoginEmail" type="email" required>
+    <label>Password</label><input id="dLoginPassword" type="password" required>
+    <button type="submit">Login as Driver</button>
   </form>
-
   <div id="dLoginMsg" class="msg"></div>
-
-  <p class="switch">
-    New driver?
-    <a onclick="showForm('dRegister')">Register vehicle</a>
-  </p>
-
+  <p class="switch">New driver? <a onclick="showForm('dRegister')">Register vehicle</a></p>
+  <p class="switch"><a onclick="openForgot('dLoginEmail')">Forgot password?</a></p>
   <button class="outline" onclick="backHome()">Back</button>
 </section>
-
-<!-- DRIVER REGISTER -->
 
 <section class="form" id="dRegister">
   <h2>Driver Registration</h2>
   <p class="sub">Submit your details for admin review.</p>
-
   <form onsubmit="register(event,'driver')">
-    <label>Full name</label>
-    <input id="dName" required>
-
-    <label>Email</label>
-    <input id="dEmail" type="email" required>
-
-    <label>Phone</label>
-    <input id="dPhone" type="tel" required>
-
-    <label>Vehicle make and model</label>
-    <input id="dVehicle" placeholder="e.g. Cadillac VISTIQ" required>
-
+    <label>Full name</label><input id="dName" required>
+    <label>Email</label><input id="dEmail" type="email" required>
+    <label>Phone</label><input id="dPhone" type="tel" required>
+    <label>Vehicle make and model</label><input id="dVehicle" placeholder="e.g. Cadillac VISTIQ" required>
     <label>Vehicle category</label>
     <select id="dCategory" required>
       <option value="">Select category</option>
@@ -524,151 +164,73 @@ footer {
       <option>Executive Luxury Sedan</option>
       <option>Passenger Van</option>
     </select>
-
-    <label>Vehicle registration</label>
-    <input id="dPlate" required>
-
-    <label>Password</label>
-    <input id="dPassword" type="password" minlength="8" required>
-
-    <button>Register as Driver</button>
+    <label>Vehicle registration</label><input id="dPlate" required>
+    <label>Password</label><input id="dPassword" type="password" minlength="8" required>
+    <button type="submit">Register as Driver</button>
   </form>
-
   <div id="dRegisterMsg" class="msg"></div>
-
-  <p class="switch">
-    Already registered?
-    <a onclick="showForm('dLogin')">Login</a>
-  </p>
-
+  <p class="switch">Already registered? <a onclick="showForm('dLogin')">Login</a></p>
   <button class="outline" onclick="backHome()">Back</button>
 </section>
-
-<!-- ADMIN LOGIN -->
 
 <section class="form" id="aLogin">
   <h2>Administrator Login</h2>
   <p class="sub">Restricted ELITE CLUB administration.</p>
-
   <form onsubmit="login(event,'admin')">
-    <label>Admin email</label>
-    <input id="aLoginEmail" type="email" required>
-
-    <label>Password</label>
-    <input id="aLoginPassword" type="password" required>
-
-    <button>Secure Admin Login</button>
+    <label>Admin email</label><input id="aLoginEmail" type="email" required>
+    <label>Password</label><input id="aLoginPassword" type="password" required>
+    <button type="submit">Secure Admin Login</button>
   </form>
-
   <div id="aLoginMsg" class="msg"></div>
-
-  <p class="switch">
-    Forgot your password?
-    <a onclick="showForm('forgotPasswordForm')">Reset password</a>
-  </p>
-
+  <p class="switch"><a onclick="openForgot('aLoginEmail')">Forgot password?</a></p>
   <button class="outline" onclick="backHome()">Back</button>
 </section>
 
-<!-- FORGOT PASSWORD -->
-
-<section class="form" id="forgotPasswordForm">
-  <h2>Forgot Password</h2>
-  <p class="sub">Enter your admin email to receive a password recovery link.</p>
-
+<section class="form" id="forgotForm">
+  <h2>Reset Password</h2>
+  <p class="sub">Enter your account email. We will send a recovery link.</p>
   <form onsubmit="sendPasswordReset(event)">
-    <label>Admin email</label>
-    <input
-      id="recoveryEmail"
-      type="email"
-      value="sidhusoman52@gmail.com"
-      required
-    >
-
+    <label>Email address</label><input id="recoveryEmail" type="email" required>
     <button type="submit">Send Recovery Email</button>
   </form>
-
-  <div id="forgotPasswordMsg" class="msg"></div>
-
-  <button class="outline" onclick="showForm('aLogin')">Back to Admin Login</button>
+  <div id="forgotMsg" class="msg"></div>
+  <button class="outline" onclick="showForm('aLogin')">Back to Login</button>
 </section>
 
-<!-- NEW PASSWORD SCREEN -->
-
-<section class="form" id="resetPasswordForm">
-  <h2>Reset Admin Password</h2>
-  <p class="sub">Create a new secure password for ELITE CLUB.</p>
-
+<section class="form" id="resetForm">
+  <h2>Create New Password</h2>
+  <p class="sub">Enter and confirm your new password.</p>
   <form onsubmit="updatePassword(event)">
     <label>New password</label>
-    <input
-      id="newAdminPassword"
-      type="password"
-      minlength="8"
-      autocomplete="new-password"
-      required
-      placeholder="Enter new password"
-    >
-
+    <input id="newPassword" type="password" minlength="8" autocomplete="new-password" required>
     <label>Confirm new password</label>
-    <input
-      id="confirmAdminPassword"
-      type="password"
-      minlength="8"
-      autocomplete="new-password"
-      required
-      placeholder="Confirm new password"
-    >
-
+    <input id="confirmPassword" type="password" minlength="8" autocomplete="new-password" required>
     <button type="submit">Save New Password</button>
   </form>
-
-  <div id="resetPasswordMsg" class="msg"></div>
+  <div id="resetMsg" class="msg"></div>
 </section>
-
-<!-- PASSENGER DASHBOARD -->
 
 <section class="dash" id="pDash">
   <div class="head">
-    <div>
-      <h1>Passenger Dashboard</h1>
-      <p id="pWelcome"></p>
-    </div>
+    <div><h1>Passenger Dashboard</h1><p id="pWelcome"></p></div>
     <button class="outline small" onclick="logout()">Log out</button>
   </div>
-
   <div class="grid">
     <div class="panel">
       <h2>Book a Premium Ride</h2>
       <p>Choose pickup, destination and vehicle.</p>
-
-      <label>Pickup location</label>
-      <input placeholder="Enter pickup address">
-
-      <label>Destination</label>
-      <input placeholder="Enter destination">
-
+      <label>Pickup location</label><input placeholder="Enter pickup address">
+      <label>Destination</label><input placeholder="Enter destination">
       <label>Vehicle category</label>
       <select>
-        <option>Standard Sedan</option>
-        <option>Premium SUV</option>
-        <option>Cadillac VISTIQ</option>
-        <option>Executive Luxury Sedan</option>
+        <option>Standard Sedan</option><option>Premium SUV</option>
+        <option>Cadillac VISTIQ</option><option>Executive Luxury Sedan</option>
         <option>Passenger Van</option>
       </select>
-
       <label>Ride timing</label>
-      <select>
-        <option>Book now</option>
-        <option>Schedule for later</option>
-      </select>
-
-      <div class="note">
-        Booking submission, payments and driver matching are not connected yet.
-        This is a dashboard preview; it does not create a ride.
-      </div>
+      <select><option>Book now</option><option>Schedule for later</option></select>
+      <div class="note">Ride booking, payments and driver matching are not connected yet. This is a preview only.</div>
     </div>
-
     <div class="panel">
       <h2>Your account</h2>
       <p>Your booking history will appear here after the booking system is developed.</p>
@@ -676,91 +238,57 @@ footer {
   </div>
 </section>
 
-<!-- DRIVER DASHBOARD -->
-
 <section class="dash" id="dDash">
   <div class="head">
-    <div>
-      <h1>Driver Dashboard</h1>
-      <p id="dWelcome"></p>
-    </div>
+    <div><h1>Driver Dashboard</h1><p id="dWelcome"></p></div>
     <button class="outline small" onclick="logout()">Log out</button>
   </div>
-
   <div class="grid">
     <div class="panel">
       <h2>Application status</h2>
-      <p id="dStatus"></p>
-
+      <div id="dStatus"></div>
       <p>Vehicle: <strong id="dVehicleInfo"></strong></p>
       <p>Category: <strong id="dCategoryInfo"></strong></p>
       <p>Registration: <strong id="dPlateInfo"></strong></p>
     </div>
-
     <div class="panel">
       <h2>Ride requests</h2>
-      <p>Ride dispatch and availability controls will be enabled in a later development step.</p>
-
-      <div class="note">
-        Only approved drivers will be eligible to receive ride requests.
-      </div>
+      <p>Ride dispatch and availability controls will be added in a later development step.</p>
+      <div class="note">Only approved drivers should be eligible for ride requests. Dispatch must enforce this on the server.</div>
     </div>
   </div>
 </section>
-
-<!-- ADMIN DASHBOARD -->
 
 <section class="dash" id="aDash">
   <div class="head">
-    <div>
-      <h1>Admin Dashboard</h1>
-      <p>Review driver applications and approval status.</p>
-    </div>
-
+    <div><h1>Admin Dashboard</h1><p>Review driver applications and approval status.</p></div>
     <button class="outline small" onclick="logout()">Log out</button>
   </div>
-
   <div class="panel">
     <h2>Driver applications</h2>
     <div id="aMsg" class="msg"></div>
-
-    <div id="driverList">
-      <div class="empty">Loading applications...</div>
-    </div>
+    <div id="driverList"><div class="empty">Loading applications...</div></div>
   </div>
 </section>
-
 </main>
 
-<footer>
-  © 2026 ELITE CLUB. All rights reserved.<br>
-  Premium Rides. Elevated Journeys.
-</footer>
-
-<!-- SUPABASE LIBRARY -->
+<footer>© 2026 ELITE CLUB. All rights reserved.<br>Premium Rides. Elevated Journeys.</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
+"use strict";
 
-// ========================================
-// SUPABASE CONFIGURATION
-// ========================================
-
-const SUPABASE_URL =
-  "https://xnykeattlvxfevbfrrml.supabase.co";
-
-const SUPABASE_KEY =
-  "sb_publishable_SmeD_22mi0H-4ISHrk2jjA_ZSnnVnFb";
-
+const SUPABASE_URL = "https://xnykeattlvxfevbfrrml.supabase.co";
+const SUPABASE_KEY = "sb_publishable_SmeD_22mi0H-4ISHrk2jjA_ZSnnVnFb";
 const ADMIN_EMAIL = "sidhusoman52@gmail.com";
+const REDIRECT_URL = "https://elite-club-red.vercel.app";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY,
   {
     auth: {
-      flowType: "implicit",
+      flowType: "pkce",
       autoRefreshToken: true,
       persistSession: true,
       detectSessionInUrl: true
@@ -768,819 +296,335 @@ const supabaseClient = window.supabase.createClient(
   }
 );
 
-
-// ========================================
-// NAVIGATION
-// ========================================
-
 function showForm(id) {
-
   document.getElementById("intro").classList.add("hidden");
   document.getElementById("roles").classList.add("hidden");
-
-  document.querySelectorAll(".form,.dash").forEach(x => {
-    x.classList.remove("active");
-  });
-
-  document.getElementById(id).classList.add("active");
-
+  document.querySelectorAll(".form,.dash").forEach(x => x.classList.remove("active"));
+  const target = document.getElementById(id);
+  if (!target) return;
+  target.classList.add("active");
   document.querySelectorAll(".msg").forEach(x => {
     x.className = "msg";
     x.textContent = "";
   });
-
   window.scrollTo(0,0);
 }
-
 
 function backHome() {
-
-  document.querySelectorAll(".form,.dash").forEach(x => {
-    x.classList.remove("active");
-  });
-
+  document.querySelectorAll(".form,.dash").forEach(x => x.classList.remove("active"));
   document.getElementById("intro").classList.remove("hidden");
   document.getElementById("roles").classList.remove("hidden");
-
   window.scrollTo(0,0);
 }
-
 
 function dashboard(id) {
-
   document.getElementById("intro").classList.add("hidden");
   document.getElementById("roles").classList.add("hidden");
-
-  document.querySelectorAll(".form,.dash").forEach(x => {
-    x.classList.remove("active");
-  });
-
+  document.querySelectorAll(".form,.dash").forEach(x => x.classList.remove("active"));
   document.getElementById(id).classList.add("active");
-
   window.scrollTo(0,0);
 }
 
-
-function msg(id,message,type) {
-
-  const element = document.getElementById(id);
-
-  element.textContent = message;
-  element.className = "msg show " + type;
+function showMessage(id,text,type) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = text;
+  el.className = "msg show " + type;
 }
 
-
-// ========================================
-// SEND PASSWORD RECOVERY EMAIL
-// ========================================
+function openForgot(sourceId) {
+  const source = document.getElementById(sourceId);
+  document.getElementById("recoveryEmail").value = source ? source.value.trim() : "";
+  showForm("forgotForm");
+}
 
 async function sendPasswordReset(event) {
-
   event.preventDefault();
-
   const button = event.target.querySelector("button");
-  const oldText = button.textContent;
-
+  const old = button.textContent;
   button.disabled = true;
   button.textContent = "Sending...";
-
-  const email = document.getElementById("recoveryEmail")
-    .value.trim();
-
   try {
-
-    const {error} =
-      await supabaseClient.auth.resetPasswordForEmail(
-        email,
-        {
-          redirectTo: "https://elite-club-red.vercel.app"
-        }
-      );
-
-    if(error) throw error;
-
-    msg(
-      "forgotPasswordMsg",
-      "If this email is registered, a password recovery email will be sent. Check your inbox and spam folder.",
-      "success"
-    );
-
+    const email = document.getElementById("recoveryEmail").value.trim();
+    const {error} = await supabaseClient.auth.resetPasswordForEmail(email,{
+      redirectTo: REDIRECT_URL
+    });
+    if (error) throw error;
+    showMessage("forgotMsg","If this email is registered, a recovery email has been sent. Open the link using this same website address.","success");
   } catch(error) {
-
-    msg("forgotPasswordMsg",error.message,"error");
-
+    showMessage("forgotMsg",error.message,"error");
   } finally {
-
     button.disabled = false;
-    button.textContent = oldText;
-
+    button.textContent = old;
   }
 }
-
-
-// ========================================
-// UPDATE PASSWORD AFTER RECOVERY
-// ========================================
 
 async function updatePassword(event) {
-
   event.preventDefault();
-
-  const form = event.target;
-  const button = form.querySelector("button");
-  const oldText = button.textContent;
-
-  const password =
-    document.getElementById("newAdminPassword").value;
-
-  const confirmPassword =
-    document.getElementById("confirmAdminPassword").value;
-
-  if(password.length < 8) {
-
-    msg(
-      "resetPasswordMsg",
-      "Password must contain at least 8 characters.",
-      "error"
-    );
-
+  const password = document.getElementById("newPassword").value;
+  const confirm = document.getElementById("confirmPassword").value;
+  if (password.length < 8) {
+    showMessage("resetMsg","Password must be at least 8 characters.","error");
     return;
   }
-
-  if(password !== confirmPassword) {
-
-    msg(
-      "resetPasswordMsg",
-      "Passwords do not match. Please try again.",
-      "error"
-    );
-
+  if (password !== confirm) {
+    showMessage("resetMsg","The passwords do not match.","error");
     return;
   }
-
+  const button = event.target.querySelector("button");
+  const old = button.textContent;
   button.disabled = true;
-  button.textContent = "Updating password...";
-
+  button.textContent = "Updating...";
   try {
-
-    const {data,error} =
-      await supabaseClient.auth.updateUser({
-        password:password
-      });
-
-    if(error) throw error;
-
-    document.getElementById("newAdminPassword").value = "";
-    document.getElementById("confirmAdminPassword").value = "";
-
-    msg(
-      "resetPasswordMsg",
-      "Your password has been updated successfully. You can now log in with your new password.",
-      "success"
-    );
-
-    form.reset();
-
+    const {error} = await supabaseClient.auth.updateUser({password});
+    if (error) throw error;
+    event.target.reset();
+    showMessage("resetMsg","Password updated successfully. You can now return to login and sign in with your new password.","success");
   } catch(error) {
-
-    msg(
-      "resetPasswordMsg",
-      error.message,
-      "error"
-    );
-
+    showMessage("resetMsg",error.message,"error");
   } finally {
-
     button.disabled = false;
-    button.textContent = oldText;
-
+    button.textContent = old;
   }
-
 }
-
-
-// ========================================
-// REGISTRATION
-// ========================================
 
 async function register(event,role) {
-
   event.preventDefault();
-
   const form = event.target;
   const button = form.querySelector("button");
-  const oldText = button.textContent;
-
+  const old = button.textContent;
   button.disabled = true;
   button.textContent = "Please wait...";
-
-  const value = id => {
-    return document.getElementById(id).value.trim();
+  const val = id => document.getElementById(id).value.trim();
+  const passenger = role === "passenger";
+  const metadata = passenger ? {
+    full_name:val("pName"),
+    phone:val("pPhone"),
+    role:"passenger"
+  } : {
+    full_name:val("dName"),
+    phone:val("dPhone"),
+    role:"driver",
+    vehicle_model:val("dVehicle"),
+    vehicle_category:val("dCategory"),
+    vehicle_registration:val("dPlate")
   };
-
-  const isPassenger = role === "passenger";
-
-  const metadata = isPassenger
-    ? {
-        full_name:value("pName"),
-        phone:value("pPhone"),
-        role:"passenger"
-      }
-    : {
-        full_name:value("dName"),
-        phone:value("dPhone"),
-        role:"driver",
-        vehicle_model:value("dVehicle"),
-        vehicle_category:value("dCategory"),
-        vehicle_registration:value("dPlate")
-      };
-
-  try {
-
-    const {data,error} = await supabaseClient.auth.signUp({
-
-      email:value(isPassenger ? "pEmail" : "dEmail"),
-
-      password:document.getElementById(
-        isPassenger ? "pPassword" : "dPassword"
-      ).value,
-
-      options:{
-        data:metadata,
-        emailRedirectTo:"https://elite-club-red.vercel.app"
-      }
-
-    });
-
-    if(error) throw error;
-
-    msg(
-      isPassenger ? "pRegisterMsg" : "dRegisterMsg",
-      data.session
-        ? "Account created successfully."
-        : "Registration received. Please confirm your email, then log in. Driver accounts require admin approval.",
-      "success"
-    );
-
-    form.reset();
-
-  } catch(error) {
-
-    msg(
-      isPassenger ? "pRegisterMsg" : "dRegisterMsg",
-      error.message,
-      "error"
-    );
-
-  } finally {
-
-    button.disabled = false;
-    button.textContent = oldText;
-
-  }
-
-}
-
-
-// ========================================
-// LOGIN
-// ========================================
-
-async function login(event,role) {
-
-  event.preventDefault();
-
-  const form = event.target;
-  const button = form.querySelector("button");
-  const oldText = button.textContent;
-
-  const password =
-    document.getElementById("newAdminPassword").value;
-
-  const confirmPassword =
-    document.getElementById("confirmAdminPassword").value;
-
-  if(password.length < 8) {
-    msg(
-      "resetPasswordMsg",
-      "Password must contain at least 8 characters.",
-      "error"
-    );
-
-    return;
-  }
-  if(password !== confirmPassword) {
-
-    msg(
-      "resetPasswordMsg",
-      "Passwords do not match. Please try again.",
-      "error"
-    );
-    return;
-  }
-
-  button.disabled = true;
-  button.textContent = "Updating password...";
-
-  try {
-
-    const {data,error} =
-      await supabaseClient.auth.updateUser({
-        password:password
-        });
-
-    if(error) throw error;
-
-    document.getElementById("newAdminPassword").value = "";
-    document.getElementById("confirmAdminPassword").value = "";
-
-    msg(
-      "resetPasswordMsg",
-      "Your password has been updated successfully. 
-      "success"
-    );
-
-    form.reset();
-
-  } catch(error) {
-
-    msg(
-      "resetPasswordMsg",
-      error.message,
-      "error"
-    );
-
-  } finally {
-
-    button.disabled = false;
-    button.textContent = oldText;
-
-  }
-  
-  }
-
-
-// ========================================
-// REGISTRATION
-// ========================================
-
-async function register(event,role) {
-
-  event.preventDefault();
-  const form = event.target;
-  const button = form.querySelector("button");
-  const oldText = button.textContent;
-
-  button.disabled = true;
-  button.textContent = "Please wait...";
-
-  const value = id => {
-    return document.getElementById(id).value.trim();
-  };
-  const isPassenger = role === "passenger";
-
-  const metadata = isPassenger
-    ? {
-        full_name:value("pName"),
-        phone:value("pPhone"),
-        role:"passenger"
-      }
-    : {
-        full_name:value("dName"),
-      phone:value("dPhone"),
-        role:"driver",
-        vehicle_model:value("dVehicle"),
-        vehicle_category:value("dCategory"),
-        vehicle_registration:value("dPlate")
-      };
-
+  const msgId = passenger ? "pRegisterMsg" : "dRegisterMsg";
   try {
     const {data,error} = await supabaseClient.auth.signUp({
-
-      email:value(isPassenger ? "pEmail" : "dEmail"),
-
-      password:document.getElementById(
-        isPassenger ? "pPassword" : "dPassword"
-      ).value,
-
+      email:val(passenger ? "pEmail" : "dEmail"),
+      password:document.getElementById(passenger ? "pPassword" : "dPassword").value,
       options:{
         data:metadata,
-        emailRedirectTo:"https://elite-club-red.vercel.app"
+        emailRedirectTo:REDIRECT_URL
       }
-
     });
-
-    if(error) throw error;
-
-    msg(
-      isPassenger ? "pRegisterMsg" : "dRegisterMsg",
+    if (error) throw error;
+    form.reset();
+    showMessage(msgId,
       data.session
-      ? "Account created successfully."
-        : "Registration received. Please confirm your email, then log in. Driver accounts require admin approval.",
+        ? "Account created. You can now sign in."
+        : "Registration received. Please confirm your email, then log in. New driver applications start as pending.",
       "success"
     );
-
-    form.reset();
-
   } catch(error) {
-    msg(
-      isPassenger ? "pRegisterMsg" : "dRegisterMsg",
-      error.message,
-      "error"
-    );
-
+    showMessage(msgId,error.message,"error");
   } finally {
-
     button.disabled = false;
-    button.textContent = oldText;
-
+    button.textContent = old;
   }
-
 }
 
-
-// ========================================
-// LOGIN
-// ========================================
-
 async function login(event,role) {
-
   event.preventDefault();
-
-  const form = event.target;
-  const button = form.querySelector("button");
-  const oldText = button.textContent;
-
+  const prefix = role === "passenger" ? "p" : role === "driver" ? "d" : "a";
+  const email = document.getElementById(prefix+"LoginEmail").value.trim();
+  const password = document.getElementById(prefix+"LoginPassword").value;
+  const button = event.target.querySelector("button");
+  const old = button.textContent;
   button.disabled = true;
   button.textContent = "Please wait...";
-
-  const prefix =
-    role === "passenger" ? "p" :
-    role === "driver" ? "d" : "a";
-
-  const email = document.getElementById(
-    prefix + "LoginEmail"
-  ).value.trim();
-
-  const password = document.getElementById(
-    prefix + "LoginPassword"
-  ).value;
-
   try {
-
-    const {data,error} =
-      await supabaseClient.auth.signInWithPassword({
-        email:email,
-        password:password
-      });
-
-    if(error) throw error;
-
+    const {data,error} = await supabaseClient.auth.signInWithPassword({email,password});
+    if (error) throw error;
     const user = data.user;
 
-    if(role === "admin") {
-
-      if(
-        email.toLowerCase() !== ADMIN_EMAIL ||
-        user.app_metadata?.role !== "admin"
-      ) {
-
+    if (role === "admin") {
+      if (email.toLowerCase() !== ADMIN_EMAIL ||
+          user.app_metadata?.role !== "admin") {
         await supabaseClient.auth.signOut();
-
-        throw new Error(
-          "This account is not authorised as an administrator."
-        );
-
+        throw new Error("This account does not have administrator permission. Check the admin SQL setup.");
       }
-
       await loadAdmin();
       return;
     }
 
-
-    const {data:profile,error:profileError} =
-      await supabaseClient
-        .from("profiles")
-        .select("*")
-        .eq("id",user.id)
-        .single();
-
-    if(profileError) throw profileError;
-
-    if(profile.role !== role) {
-
+    const {data:profile,error:profileError} = await supabaseClient
+      .from("profiles").select("*").eq("id",user.id).single();
+    if (profileError) throw profileError;
+    if (profile.role !== role) {
       await supabaseClient.auth.signOut();
-
-      throw new Error(
-        "This account is not registered as a " + role + "."
-      );
-
+      throw new Error("This account is not registered as a "+role+".");
     }
 
-
-    if(role === "passenger") {
-
+    if (role === "passenger") {
       dashboard("pDash");
-
-      document.getElementById("pWelcome").textContent =
-        "Welcome, " + (profile.full_name || "Passenger");
-
+      document.getElementById("pWelcome").textContent = "Welcome, "+(profile.full_name || "Passenger");
     } else {
-
       dashboard("dDash");
-
-      document.getElementById("dWelcome").textContent =
-        "Welcome, " + (profile.full_name || "Driver");
-
-      const status = [
-        "pending",
-        "approved",
-        "rejected"
-      ].includes(profile.approval_status)
-        ? profile.approval_status
-        : "pending";
-
-      const statusElement =
-        document.getElementById("dStatus");
-
-      statusElement.replaceChildren();
-
-      const statusLine = document.createElement("div");
-      statusLine.textContent = "Application status: ";
-
+      document.getElementById("dWelcome").textContent = "Welcome, "+(profile.full_name || "Driver");
+      const status = ["pending","approved","rejected"].includes(profile.approval_status)
+        ? profile.approval_status : "pending";
+      const statusBox = document.getElementById("dStatus");
+      statusBox.replaceChildren();
+      const line = document.createElement("p");
+      line.append("Application status: ");
       const pill = document.createElement("span");
-      pill.className = "pill " + status;
+      pill.className = "pill "+status;
       pill.textContent = status.toUpperCase();
-
-      statusLine.appendChild(pill);
-
+      line.appendChild(pill);
       const description = document.createElement("p");
-
-      description.textContent =
-        status === "approved"
-          ? "Your application is approved. Ride dispatch will be activated in a later step."
-          : status === "rejected"
-          ? "Your application was rejected. Please contact support."
-          : "Your application is awaiting admin review. You cannot accept rides yet.";
-
-      statusElement.append(statusLine,description);
-
-      document.getElementById("dVehicleInfo").textContent =
-        profile.vehicle_model || "Not provided";
-
-      document.getElementById("dCategoryInfo").textContent =
-        profile.vehicle_category || "Not provided";
-
-      document.getElementById("dPlateInfo").textContent =
-        profile.vehicle_registration || "Not provided";
-
+      description.textContent = status === "approved"
+        ? "Your application is approved. Dispatch will be enabled after the booking system is built."
+        : status === "rejected"
+        ? "Your application was rejected. Please contact support."
+        : "Your application is awaiting admin review. You cannot accept rides yet.";
+      statusBox.append(line,description);
+      document.getElementById("dVehicleInfo").textContent = profile.vehicle_model || "Not provided";
+      document.getElementById("dCategoryInfo").textContent = profile.vehicle_category || "Not provided";
+      document.getElementById("dPlateInfo").textContent = profile.vehicle_registration || "Not provided";
     }
-
   } catch(error) {
-
-    msg(prefix + "LoginMsg",error.message,"error");
-
+    showMessage(prefix+"LoginMsg",error.message,"error");
   } finally {
-
     button.disabled = false;
-    button.textContent = oldText;
-
+    button.textContent = old;
   }
-
 }
 
-
-// ========================================
-// ADMIN DASHBOARD
-// ========================================
-
 async function loadAdmin() {
-
-  dashboard("aDash");
-
-  const {data:{user},error:userError} =
-    await supabaseClient.auth.getUser();
-
-  if(
-    userError ||
-    !user ||
-    user.app_metadata?.role !== "admin" ||
-    user.email?.toLowerCase() !== ADMIN_EMAIL
-  ) {
-
-    throw new Error(
-      "Admin permission required. Please sign in again."
-    );
-
+  const {data:{user},error:userError} = await supabaseClient.auth.getUser();
+  if (userError || !user ||
+      user.app_metadata?.role !== "admin" ||
+      user.email?.toLowerCase() !== ADMIN_EMAIL) {
+    throw new Error("Admin permission required. Please sign in again.");
   }
 
-
-  const {data,error} = await supabaseClient
-    .from("profiles") 
-  .select(
-      "id,full_name,phone,role,approval_status,vehicle_model,vehicle_category,vehicle_registration,created_at"
-    )
+  dashboard("aDash");
+  const list = document.getElementById("driverList");
+  list.textContent = "Loading applications...";
+  const {data,error} = await supabaseClient.from("profiles")
+    .select("id,full_name,phone,role,approval_status,vehicle_model,vehicle_category,vehicle_registration,created_at")
     .eq("role","driver")
     .order("created_at",{ascending:false});
 
-  if(error) {
-
-    msg("aMsg",error.message,"error");
+  if (error) {
+    showMessage("aMsg",error.message,"error");
     return;
-    }
-
-  const list = document.getElementById("driverList");
-
-  list.replaceChildren();
-
-  if(!data || data.length === 0) {
-
-  const empty = document.createElement("div");
-
-    empty.className = "empty";
-    empty.textContent = "No driver applications found.";
-
-    list.appendChild(empty);
-    return;
-
   }
 
+  list.replaceChildren();
+  if (!data || data.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "No driver applications found.";
+    list.appendChild(empty);
+    return;
+  }
 
   data.forEach(driver => {
-
     const row = document.createElement("div");
     row.className = "row";
-
     const info = document.createElement("div");
     info.className = "info";
     const name = document.createElement("strong");
     name.textContent = driver.full_name || "Driver";
-
     const detail = document.createElement("small");
-    detail.textContent =
-      "Phone: " + (driver.phone || "—") +
-      " | Vehicle: " + (driver.vehicle_model || "—") +
-      " | Category: " + (driver.vehicle_category || "—") +
-      " | Plate: " + (driver.vehicle_registration || "—");
-
-    const status = [
-      "pending",
-      "approved",
-      "rejected"
-      ].includes(driver.approval_status)
-      ? driver.approval_status
-      : "pending";
-
+    detail.textContent = "Phone: "+(driver.phone||"—")+
+      " | Vehicle: "+(driver.vehicle_model||"—")+
+      " | Category: "+(driver.vehicle_category||"—")+
+      " | Plate: "+(driver.vehicle_registration||"—");
+    const status = ["pending","approved","rejected"].includes(driver.approval_status)
+      ? driver.approval_status : "pending";
     const pill = document.createElement("span");
-
-    pill.className = "pill " + status;
+    pill.className = "pill "+status;
     pill.textContent = status.toUpperCase();
-
     info.append(name,detail,pill);
+
     const actions = document.createElement("div");
     actions.className = "actions";
+    const approve = document.createElement("button");
+    approve.className = "small";
+    approve.textContent = "Approve";
+    approve.disabled = status === "approved";
+    approve.onclick = () => setApproval(driver.id,"approved");
 
-    const approveButton = document.createElement("button");
+    const reject = document.createElement("button");
+    reject.className = "small danger";
+    reject.textContent = "Reject";
+    reject.disabled = status === "rejected";
+    reject.onclick = () => setApproval(driver.id,"rejected");
 
-    approveButton.className = "small";
-    approveButton.textContent = "Approve";
-    approveButton.disabled = status === "approved";
-
-    approveButton.onclick = () => {
-     setApproval(driver.id,"approved");
-    };
-
-
-    const rejectButton = document.createElement("button");
-
-    rejectButton.className = "small danger";
-    rejectButton.textContent = "Reject";
-    rejectButton.disabled = status === "rejected";
-
-    rejectButton.onclick = () => {
-setApproval(driver.id,"rejected");
-    };
-
-
-    actions.append(approveButton,rejectButton);
+    actions.append(approve,reject);
     row.append(info,actions);
-
     list.appendChild(row);
-
   });
-  }
-
-
-// ========================================
-// APPROVE OR REJECT DRIVER
-// ========================================
+}
 
 async function setApproval(driverId,status) {
-
   try {
-    const {error} = await supabaseClient.rpc(
-      "set_driver_approval",
-      {
-        p_driver_id:driverId,
-        p_status:status
-      }
-    );
-
-    if(error) throw error;
-
-    msg(
-      "aMsg",
-      "Driver application updated: " + status.toUpperCase(),
-      "success"
-    );
-
+    const {error} = await supabaseClient.rpc("set_driver_approval",{
+      p_driver_id:driverId,
+      p_status:status
+    });
+    if (error) throw error;
+    showMessage("aMsg","Driver application updated: "+status.toUpperCase(),"success");
     await loadAdmin();
-
   } catch(error) {
-
-    msg("aMsg",error.message,"error");
-
+    showMessage("aMsg",error.message,"error");
   }
-
 }
-
-
-// ========================================
-// LOGOUT
-// ========================================
 
 async function logout() {
-
   await supabaseClient.auth.signOut();
-
   backHome();
-
 }
 
-
-// ========================================
-// AUTHENTICATION EVENTS
-// ========================================
-
-let recoveryScreenOpened = false;
-
+/* Handle Supabase password recovery links. */
 supabaseClient.auth.onAuthStateChange((event,session) => {
-
-  if(event === "PASSWORD_RECOVERY") {
-
-    recoveryScreenOpened = true;
-
-    showForm("resetPasswordForm");
-
+  if (event === "PASSWORD_RECOVERY") {
+    showForm("resetForm");
   }
-
 });
-// ========================================
-// RESTORE EXISTING ADMIN SESSION
-// ========================================
 
-async function restoreAdmin() {
+/* Also handle a recovery link if the session was restored before
+   the page's event listener was ready. */
+async function initialiseApp() {
+  const params = new URLSearchParams(window.location.search);
+  const hash = new URLSearchParams(window.location.hash.replace(/^#/,""));
+  const isRecovery = params.get("type") === "recovery" ||
+                     hash.get("type") === "recovery";
 
-  try {
+  if (isRecovery) {
+    showForm("resetForm");
+    return;
+  }
 
-    // Never replace the recovery screen with the dashboard.
-    if(
-      window.location.hash.includes("type=recovery")
-    ) {
-      return;
-    }
+  const {data,error} = await supabaseClient.auth.getSession();
+  if (error || !data.session) return;
 
-    const {data,error} =
-      await supabaseClient.auth.getSession();
-
-    if(error) throw error;
-
-    const session = data.session;
-if(
-      !recoveryScreenOpened &&
-      session?.user?.app_metadata?.role === "admin" &&
-      session.user.email?.toLowerCase() === ADMIN_EMAIL
-    ) {
-
+  const user = data.session.user;
+  if (user.app_metadata?.role === "admin" &&
+      user.email?.toLowerCase() === ADMIN_EMAIL) {
+    try {
       await loadAdmin();
-
+    } catch(err) {
+      console.error(err);
+    }
+  }
 }
-      } catch(error) {
 
-    console.error(
-      "Admin session restore:",
-      error.message
-    );
-
-  }
-  
-  }
-
-restoreAdmin();
-
+initialiseApp();
 </script>
-
 </body>
 </html>
-  
-      
