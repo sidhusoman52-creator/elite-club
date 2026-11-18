@@ -1,72 +1,184 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ELITE CLUB | Premium Rides</title>
+<meta name="description" content="ELITE CLUB premium chauffeur rides, airport transfers and private journeys across New York and beyond.">
+
 <style>
-:root{--g:#d6ad60;--bg:#080808;--p:#151515;--m:#aaa;--line:#393127}
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:var(--bg);color:#fff;min-height:100vh}
-header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292929;gap:12px}
-.logo{color:var(--g);font-size:25px;font-weight:bold;letter-spacing:3px}
-.tag{color:#aaa;font-size:11px;margin-top:5px;letter-spacing:1px}
-.ht{color:var(--g);font-size:12px}
-main{max-width:1100px;margin:auto;padding:38px 16px 60px}
-.intro{text-align:center;margin-bottom:30px}
-.intro h1{font-size:clamp(28px,5vw,44px);margin-bottom:12px}
-.gold{color:var(--g)}
-p{color:var(--m);line-height:1.6;font-size:14px}
-.roles,.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:850px;margin:auto}
-.card,.panel,.form{background:var(--p);border:1px solid var(--line);border-radius:14px;padding:24px}
-.card{text-align:center}
-.ico{font-size:40px;margin-bottom:12px}
-.card h2,.form h2,.panel h2{color:var(--g);margin-bottom:10px}
-.card p{margin:10px 0 18px}
-button{background:var(--g);color:#111;border:0;border-radius:6px;padding:13px 15px;font-weight:bold;width:100%;cursor:pointer}
-button:disabled{opacity:.5;cursor:not-allowed}
-.outline{background:transparent;color:var(--g);border:1px solid var(--g);margin-top:12px}
-.danger{background:#8d3030;color:white}
-.small{width:auto;padding:9px 12px;font-size:12px}
-.form{display:none;max-width:480px;margin:24px auto}
-.form.active,.dash.active{display:block}
-.sub{margin:8px 0 18px}
-label{display:block;color:#ddd;font-size:13px;margin:14px 0 7px}
-input,select{width:100%;padding:12px;background:#080808;color:white;border:1px solid #444;border-radius:6px;font-size:15px}
-.form form button{margin-top:20px}
-.switch{text-align:center;margin-top:18px;font-size:13px}
-.switch a{color:var(--g);text-decoration:underline;cursor:pointer}
-.msg{display:none;padding:12px;margin-top:14px;border-radius:6px;font-size:13px;overflow-wrap:anywhere;line-height:1.5}
-.msg.show{display:block}
-.success{background:#17331f;color:#b8efc5}
-.error{background:#421d1d;color:#ffc1c1}
-.dash{display:none}
-.head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-.head h1{color:var(--g);font-size:clamp(24px,4vw,34px)}
-.grid{max-width:none}
-.panel h2{font-size:19px}
-.pill{display:inline-block;padding:6px 10px;border-radius:20px;font-size:11px;background:#40351f;color:#ffdc8c;margin:8px 0}
-.approved{background:#173b25;color:#b8efc5}
-.rejected{background:#492020;color:#ffc1c1}
-.note{border-left:3px solid var(--g);padding:12px;background:#201b12;color:#d9c49c;font-size:13px;line-height:1.6;margin-top:14px}
-.row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;padding:15px 0;border-top:1px solid #393127}
-.info{flex:1;min-width:180px}
-.info strong,.info small{display:block}
-.info small{color:var(--m);line-height:1.6;margin:5px 0}
-.actions{display:flex;gap:7px}
-.empty{padding:15px;border:1px dashed #51432d;border-radius:8px;color:var(--m)}
-.hidden{display:none!important}
-footer{text-align:center;padding:24px;border-top:1px solid #292929;color:#777;font-size:12px;line-height:1.8}
-@media(max-width:650px){
-header{padding:16px 5%}.ht{font-size:10px}
-main{padding:30px 13px}
-.roles,.grid{grid-template-columns:1fr}
-.card,.panel,.form{padding:20px}
-.actions{width:100%}.actions button{flex:1}
+:root {
+  --gold:#d6ad60;
+  --bg:#080808;
+  --panel:#151515;
+  --muted:#aaa;
+  --line:#393127;
+  --green:#173b25;
+  --red:#492020;
+}
+* {box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body {background:var(--bg);color:#fff;min-height:100vh}
+header {
+  padding:20px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  border-bottom:1px solid #292929
+}
+.logo {color:var(--gold);font-size:27px;font-weight:bold;letter-spacing:3px}
+.tag {color:#aaa;font-size:12px;margin-top:6px;letter-spacing:1px}
+.ht {color:var(--gold);font-size:12px}
+main {max-width:1100px;margin:auto;padding:35px 16px 60px}
+.intro {text-align:center;margin-bottom:30px}
+.intro h1 {font-size:clamp(28px,5vw,44px);margin-bottom:12px}
+.gold {color:var(--gold)}
+p {color:var(--muted);line-height:1.6;font-size:14px}
+.roles,.grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  max-width:850px;
+  margin:auto
+}
+.card,.panel,.form {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:24px
+}
+.card {text-align:center}
+.ico {font-size:40px;margin-bottom:12px}
+.card h2,.form h2,.panel h2 {color:var(--gold);margin-bottom:10px}
+.card p {margin:10px 0 18px}
+button {
+  background:var(--gold);
+  color:#111;
+  border:0;
+  border-radius:7px;
+  padding:13px 15px;
+  font-weight:bold;
+  width:100%;
+  cursor:pointer
+}
+button:disabled {opacity:.5;cursor:not-allowed}
+.outline {
+  background:transparent;
+  color:var(--gold);
+  border:1px solid var(--gold);
+  margin-top:12px
+}
+.danger {background:#8d3030;color:white}
+.small {width:auto;padding:9px 12px;font-size:12px}
+.form {display:none;max-width:500px;margin:24px auto}
+.form.active,.dash.active {display:block}
+.sub {margin:8px 0 18px}
+label {display:block;color:#ddd;font-size:13px;margin:14px 0 7px}
+input,select {
+  width:100%;
+  padding:13px;
+  background:#080808;
+  color:white;
+  border:1px solid #444;
+  border-radius:6px;
+  font-size:15px
+}
+input:focus,select:focus {outline:1px solid var(--gold);border-color:var(--gold)}
+form button {margin-top:20px}
+.switch {text-align:center;margin-top:18px;font-size:13px}
+.switch a {color:var(--gold);text-decoration:underline;cursor:pointer}
+.msg {
+  display:none;
+  padding:12px;
+  margin-top:14px;
+  border-radius:6px;
+  font-size:13px;
+  overflow-wrap:anywhere;
+  line-height:1.5
+}
+.msg.show {display:block}
+.success {background:#17331f;color:#b8efc5}
+.error {background:#421d1d;color:#ffc1c1}
+.dash {display:none}
+.head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:20px
+}
+.head h1 {color:var(--gold);font-size:clamp(24px,4vw,34px)}
+.grid {max-width:none}
+.panel h2 {font-size:20px}
+.pill {
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:11px;
+  background:#40351f;
+  color:#ffdc8c;
+  margin:8px 0
+}
+.approved {background:#173b25;color:#b8efc5}
+.rejected {background:#492020;color:#ffc1c1}
+.note {
+  border-left:3px solid var(--gold);
+  padding:12px;
+  background:#201b12;
+  color:#d9c49c;
+  font-size:13px;
+  line-height:1.6;
+  margin-top:14px
+}
+.row {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  flex-wrap:wrap;
+  padding:15px 0;
+  border-top:1px solid var(--line)
+}
+.info {flex:1;min-width:180px}
+.info strong,.info small {display:block}
+.info small {color:var(--muted);line-height:1.6;margin:5px 0}
+.actions {display:flex;gap:7px}
+.empty {
+  padding:15px;
+  border:1px dashed #51432d;
+  border-radius:8px;
+  color:var(--muted)
+}
+.hidden {display:none!important}
+.pricebox {
+  border:1px solid var(--line);
+  padding:18px;
+  border-radius:10px;
+  margin-top:16px
+}
+.pricebox h2 {font-size:25px;margin-top:12px}
+hr {border:0;border-top:1px solid var(--line)}
+footer {
+  text-align:center;
+  padding:24px;
+  border-top:1px solid #292929;
+  color:#777;
+  font-size:12px;
+  line-height:1.8
+}
+@media(max-width:650px) {
+  header {padding:16px 5%}
+  .ht {font-size:10px}
+  main {padding:30px 13px}
+  .roles,.grid {grid-template-columns:1fr}
+  .card,.panel,.form {padding:20px}
+  .actions {width:100%}
+  .actions button {flex:1}
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -78,38 +190,44 @@ main{padding:30px 13px}
 </header>
 
 <main>
+
 <section class="intro" id="intro">
   <h1>Welcome to <span class="gold">ELITE CLUB</span></h1>
-  <p>Your journey begins here. Choose how you want to use our platform.</p>
+  <p>Your journey begins here. Premium travel, elevated service.</p>
 </section>
 
 <section class="roles" id="roles">
   <div class="card">
     <div class="ico">🚘</div>
     <h2>I'm a Passenger</h2>
-    <p>Find a ride and plan your next journey.</p>
-    <button type="button" onclick="showForm('pLogin')">Continue as Passenger</button>
+    <p>Book airport transfers, city rides and long-distance journeys.</p>
+    <button onclick="showForm('pLogin')">Continue as Passenger</button>
   </div>
+
   <div class="card">
     <div class="ico">🚖</div>
     <h2>I'm a Driver</h2>
-    <p>Register your vehicle and apply to drive.</p>
-    <button type="button" onclick="showForm('dLogin')">Continue as Driver</button>
+    <p>Register your vehicle and apply to drive with ELITE CLUB.</p>
+    <button onclick="showForm('dLogin')">Continue as Driver</button>
   </div>
+
   <div class="card">
     <div class="ico">🛡️</div>
     <h2>Administrator</h2>
-    <p>Review driver applications securely.</p>
-    <button type="button" onclick="showForm('aLogin')">Admin Login</button>
+    <p>Manage driver applications and platform operations.</p>
+    <button onclick="showForm('aLogin')">Admin Login</button>
   </div>
 </section>
 
+<!-- PASSENGER LOGIN -->
 <section class="form" id="pLogin">
   <h2>Passenger Login</h2>
-  <p class="sub">Sign in to your passenger account.</p>
+  <p class="sub">Sign in to book your journey.</p>
   <form onsubmit="login(event,'passenger')">
-    <label>Email</label><input id="pLoginEmail" type="email" required>
-    <label>Password</label><input id="pLoginPassword" type="password" required>
+    <label>Email</label>
+    <input id="pLoginEmail" type="email" required>
+    <label>Password</label>
+    <input id="pLoginPassword" type="password" required>
     <button type="submit">Login as Passenger</button>
   </form>
   <div id="pLoginMsg" class="msg"></div>
@@ -118,14 +236,19 @@ main{padding:30px 13px}
   <button class="outline" onclick="backHome()">Back</button>
 </section>
 
+<!-- PASSENGER REGISTRATION -->
 <section class="form" id="pRegister">
   <h2>Create Passenger Account</h2>
   <p class="sub">Join ELITE CLUB.</p>
   <form onsubmit="register(event,'passenger')">
-    <label>Full name</label><input id="pName" required>
-    <label>Email</label><input id="pEmail" type="email" required>
-    <label>Phone</label><input id="pPhone" type="tel" required>
-    <label>Password</label><input id="pPassword" type="password" minlength="8" required>
+    <label>Full name</label>
+    <input id="pName" required>
+    <label>Email</label>
+    <input id="pEmail" type="email" required>
+    <label>Phone</label>
+    <input id="pPhone" type="tel" required>
+    <label>Password</label>
+    <input id="pPassword" type="password" minlength="8" required>
     <button type="submit">Create Passenger Account</button>
   </form>
   <div id="pRegisterMsg" class="msg"></div>
@@ -133,12 +256,15 @@ main{padding:30px 13px}
   <button class="outline" onclick="backHome()">Back</button>
 </section>
 
+<!-- DRIVER LOGIN -->
 <section class="form" id="dLogin">
   <h2>Driver Login</h2>
   <p class="sub">Access your driver account.</p>
   <form onsubmit="login(event,'driver')">
-    <label>Email</label><input id="dLoginEmail" type="email" required>
-    <label>Password</label><input id="dLoginPassword" type="password" required>
+    <label>Email</label>
+    <input id="dLoginEmail" type="email" required>
+    <label>Password</label>
+    <input id="dLoginPassword" type="password" required>
     <button type="submit">Login as Driver</button>
   </form>
   <div id="dLoginMsg" class="msg"></div>
@@ -147,14 +273,19 @@ main{padding:30px 13px}
   <button class="outline" onclick="backHome()">Back</button>
 </section>
 
+<!-- DRIVER REGISTRATION -->
 <section class="form" id="dRegister">
   <h2>Driver Registration</h2>
   <p class="sub">Submit your details for admin review.</p>
   <form onsubmit="register(event,'driver')">
-    <label>Full name</label><input id="dName" required>
-    <label>Email</label><input id="dEmail" type="email" required>
-    <label>Phone</label><input id="dPhone" type="tel" required>
-    <label>Vehicle make and model</label><input id="dVehicle" placeholder="e.g. Cadillac VISTIQ" required>
+    <label>Full name</label>
+    <input id="dName" required>
+    <label>Email</label>
+    <input id="dEmail" type="email" required>
+    <label>Phone</label>
+    <input id="dPhone" type="tel" required>
+    <label>Vehicle make and model</label>
+    <input id="dVehicle" placeholder="e.g. Cadillac VISTIQ" required>
     <label>Vehicle category</label>
     <select id="dCategory" required>
       <option value="">Select category</option>
@@ -164,8 +295,10 @@ main{padding:30px 13px}
       <option>Executive Luxury Sedan</option>
       <option>Passenger Van</option>
     </select>
-    <label>Vehicle registration</label><input id="dPlate" required>
-    <label>Password</label><input id="dPassword" type="password" minlength="8" required>
+    <label>Vehicle registration</label>
+    <input id="dPlate" required>
+    <label>Password</label>
+    <input id="dPassword" type="password" minlength="8" required>
     <button type="submit">Register as Driver</button>
   </form>
   <div id="dRegisterMsg" class="msg"></div>
@@ -173,12 +306,15 @@ main{padding:30px 13px}
   <button class="outline" onclick="backHome()">Back</button>
 </section>
 
+<!-- ADMIN LOGIN -->
 <section class="form" id="aLogin">
   <h2>Administrator Login</h2>
   <p class="sub">Restricted ELITE CLUB administration.</p>
   <form onsubmit="login(event,'admin')">
-    <label>Admin email</label><input id="aLoginEmail" type="email" required>
-    <label>Password</label><input id="aLoginPassword" type="password" required>
+    <label>Admin email</label>
+    <input id="aLoginEmail" type="email" required>
+    <label>Password</label>
+    <input id="aLoginPassword" type="password" required>
     <button type="submit">Secure Admin Login</button>
   </form>
   <div id="aLoginMsg" class="msg"></div>
@@ -186,63 +322,126 @@ main{padding:30px 13px}
   <button class="outline" onclick="backHome()">Back</button>
 </section>
 
+<!-- FORGOT PASSWORD -->
 <section class="form" id="forgotForm">
   <h2>Reset Password</h2>
-  <p class="sub">Enter your account email. We will send a recovery link.</p>
+  <p class="sub">Enter your account email to receive a recovery link.</p>
   <form onsubmit="sendPasswordReset(event)">
-    <label>Email address</label><input id="recoveryEmail" type="email" required>
+    <label>Email address</label>
+    <input id="recoveryEmail" type="email" required>
     <button type="submit">Send Recovery Email</button>
   </form>
   <div id="forgotMsg" class="msg"></div>
-  <button class="outline" onclick="showForm('aLogin')">Back to Login</button>
+  <button class="outline" onclick="backHome()">Back</button>
 </section>
 
+<!-- NEW PASSWORD -->
 <section class="form" id="resetForm">
   <h2>Create New Password</h2>
-  <p class="sub">Enter and confirm your new password.</p>
   <form onsubmit="updatePassword(event)">
     <label>New password</label>
-    <input id="newPassword" type="password" minlength="8" autocomplete="new-password" required>
+    <input id="newPassword" type="password" minlength="8" required>
     <label>Confirm new password</label>
-    <input id="confirmPassword" type="password" minlength="8" autocomplete="new-password" required>
+    <input id="confirmPassword" type="password" minlength="8" required>
     <button type="submit">Save New Password</button>
   </form>
   <div id="resetMsg" class="msg"></div>
 </section>
 
+<!-- PASSENGER DASHBOARD -->
 <section class="dash" id="pDash">
   <div class="head">
-    <div><h1>Passenger Dashboard</h1><p id="pWelcome"></p></div>
+    <div>
+      <h1>Passenger Dashboard</h1>
+      <p id="pWelcome">Welcome to ELITE CLUB.</p>
+    </div>
     <button class="outline small" onclick="logout()">Log out</button>
   </div>
+
   <div class="grid">
     <div class="panel">
-      <h2>Book a Premium Ride</h2>
-      <p>Choose pickup, destination and vehicle.</p>
-      <label>Pickup location</label><input placeholder="Enter pickup address">
-      <label>Destination</label><input placeholder="Enter destination">
-      <label>Vehicle category</label>
-      <select>
-        <option>Standard Sedan</option><option>Premium SUV</option>
-        <option>Cadillac VISTIQ</option><option>Executive Luxury Sedan</option>
-        <option>Passenger Van</option>
-      </select>
-      <label>Ride timing</label>
-      <select><option>Book now</option><option>Schedule for later</option></select>
-      <div class="note">Ride booking, payments and driver matching are not connected yet. This is a preview only.</div>
+      <h2>Book Your Premium Ride</h2>
+      <p>Airport transfers, city journeys and long-distance rides — all in one place.</p>
+
+      <form onsubmit="createBooking(event)">
+        <label>Pickup location</label>
+        <input id="ridePickup" placeholder="Enter pickup address" required>
+
+        <label>Destination</label>
+        <input id="rideDropoff" placeholder="Enter destination address" required>
+
+        <label>Vehicle category</label>
+        <select id="rideVehicle" required>
+          <option>Standard Sedan</option>
+          <option>Premium SUV</option>
+          <option>Cadillac VISTIQ</option>
+          <option>Executive Luxury Sedan</option>
+          <option>Passenger Van</option>
+        </select>
+
+        <label>When do you need your ride?</label>
+        <select id="rideTiming" onchange="toggleSchedule()">
+          <option value="now">Book now</option>
+          <option value="scheduled">Schedule for later</option>
+        </select>
+
+        <div id="scheduleBox" class="hidden">
+          <label>Pickup date and time</label>
+          <input id="rideDate" type="datetime-local">
+        </div>
+
+        <div class="note">
+          <strong>Important fare information</strong><br>
+          Live route calculation is not connected yet. Enter your estimated journey distance and travel time below. These estimates are not independently verified.
+        </div>
+
+        <label>Estimated distance (miles)</label>
+        <input id="rideMiles" type="number" min="0.1" max="1000" step="0.1" placeholder="Example: 10" oninput="calculateRideFare()" required>
+
+        <label>Estimated travel time (minutes)</label>
+        <input id="rideMinutes" type="number" min="1" max="2000" step="1" placeholder="Example: 20" oninput="calculateRideFare()" required>
+
+        <div class="pricebox">
+          <h2>Fare estimate</h2>
+          <p>Base fare: $10.00</p>
+          <p id="distanceCost">Distance fare: $0.00</p>
+          <p id="timeCost">Time fare: $0.00</p>
+          <hr style="margin:12px 0">
+          <h2 id="fareTotal">$10.00 USD</h2>
+          <p>Provisional estimate only. This is not a guaranteed final fare.</p>
+        </div>
+
+        <div class="note">
+          Tolls, taxes, airport fees, parking and other surcharges are not included. Any applicable extra charges must be disclosed before a final price is confirmed.
+        </div>
+
+        <button type="submit" id="bookRideButton">Submit Ride Request</button>
+      </form>
+
+      <div id="bookingMsg" class="msg"></div>
     </div>
+
     <div class="panel">
-      <h2>Your account</h2>
-      <p>Your booking history will appear here after the booking system is developed.</p>
+      <h2>Your Booking History</h2>
+      <p>View your submitted ride requests and their current status.</p>
+      <button class="outline" type="button" onclick="loadPassengerBookings()">Refresh bookings</button>
+      <div id="passengerBookingList" style="margin-top:16px">
+        <div class="empty">Your bookings will appear here.</div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- DRIVER DASHBOARD -->
 <section class="dash" id="dDash">
   <div class="head">
-    <div><h1>Driver Dashboard</h1><p id="dWelcome"></p></div>
+    <div>
+      <h1>Driver Dashboard</h1>
+      <p id="dWelcome"></p>
+    </div>
     <button class="outline small" onclick="logout()">Log out</button>
   </div>
+
   <div class="grid">
     <div class="panel">
       <h2>Application status</h2>
@@ -253,35 +452,59 @@ main{padding:30px 13px}
     </div>
     <div class="panel">
       <h2>Ride requests</h2>
-      <p>Ride dispatch and availability controls will be added in a later development step.</p>
-      <div class="note">Only approved drivers should be eligible for ride requests. Dispatch must enforce this on the server.</div>
+      <p>Driver dispatch and availability will be connected in a later development stage.</p>
+      <div class="note">Only approved drivers should be eligible for ride requests. Server-side dispatch controls are not yet implemented.</div>
     </div>
   </div>
 </section>
 
+<!-- ADMIN DASHBOARD -->
 <section class="dash" id="aDash">
   <div class="head">
-    <div><h1>Admin Dashboard</h1><p>Review driver applications and approval status.</p></div>
+    <div>
+      <h1>Admin Dashboard</h1>
+      <p>Review driver applications and approval status.</p>
+    </div>
     <button class="outline small" onclick="logout()">Log out</button>
   </div>
+
   <div class="panel">
     <h2>Driver applications</h2>
     <div id="aMsg" class="msg"></div>
-    <div id="driverList"><div class="empty">Loading applications...</div></div>
+    <div id="driverList">
+      <div class="empty">Loading applications...</div>
+    </div>
   </div>
 </section>
+
 </main>
 
-<footer>© 2026 ELITE CLUB. All rights reserved.<br>Premium Rides. Elevated Journeys.</footer>
+<footer>
+  © 2026 ELITE CLUB. All rights reserved.<br>
+  Premium Rides. Elevated Journeys.
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 "use strict";
 
+/* SUPABASE CONFIGURATION */
 const SUPABASE_URL = "https://xnykeattlvxfevbfrrml.supabase.co";
 const SUPABASE_KEY = "sb_publishable_SmeD_22mi0H-4ISHrk2jjA_ZSnnVnFb";
 const ADMIN_EMAIL = "sidhusoman52@gmail.com";
 const REDIRECT_URL = "https://elite-club-red.vercel.app";
+
+/* PRICING CONFIGURATION */
+const BASE_FARE = 10;
+const PRICE_PER_MILE = 2;
+const PRICE_PER_MINUTE = 0.50;
+const PLATFORM_COMMISSION = 0.10;
+
+if (!window.supabase) {
+  document.body.innerHTML = "<p style='padding:30px;color:white'>Unable to load the booking service. Please refresh.</p>";
+  throw new Error("Supabase library failed to load.");
+}
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
@@ -296,31 +519,47 @@ const supabaseClient = window.supabase.createClient(
   }
 );
 
+/* NAVIGATION */
 function showForm(id) {
   document.getElementById("intro").classList.add("hidden");
   document.getElementById("roles").classList.add("hidden");
-  document.querySelectorAll(".form,.dash").forEach(x => x.classList.remove("active"));
+
+  document.querySelectorAll(".form,.dash").forEach(x => {
+    x.classList.remove("active");
+  });
+
   const target = document.getElementById(id);
   if (!target) return;
+
   target.classList.add("active");
+
   document.querySelectorAll(".msg").forEach(x => {
     x.className = "msg";
     x.textContent = "";
   });
+
   window.scrollTo(0,0);
 }
 
 function backHome() {
-  document.querySelectorAll(".form,.dash").forEach(x => x.classList.remove("active"));
+  document.querySelectorAll(".form,.dash").forEach(x => {
+    x.classList.remove("active");
+  });
+
   document.getElementById("intro").classList.remove("hidden");
   document.getElementById("roles").classList.remove("hidden");
+
   window.scrollTo(0,0);
 }
 
 function dashboard(id) {
   document.getElementById("intro").classList.add("hidden");
   document.getElementById("roles").classList.add("hidden");
-  document.querySelectorAll(".form,.dash").forEach(x => x.classList.remove("active"));
+
+  document.querySelectorAll(".form,.dash").forEach(x => {
+    x.classList.remove("active");
+  });
+
   document.getElementById(id).classList.add("active");
   window.scrollTo(0,0);
 }
@@ -328,29 +567,45 @@ function dashboard(id) {
 function showMessage(id,text,type) {
   const el = document.getElementById(id);
   if (!el) return;
+
   el.textContent = text;
   el.className = "msg show " + type;
 }
 
+/* PASSWORD RECOVERY */
 function openForgot(sourceId) {
   const source = document.getElementById(sourceId);
-  document.getElementById("recoveryEmail").value = source ? source.value.trim() : "";
+
+  document.getElementById("recoveryEmail").value =
+    source ? source.value.trim() : "";
+
   showForm("forgotForm");
 }
 
 async function sendPasswordReset(event) {
   event.preventDefault();
+
   const button = event.target.querySelector("button");
   const old = button.textContent;
+
   button.disabled = true;
   button.textContent = "Sending...";
+
   try {
     const email = document.getElementById("recoveryEmail").value.trim();
+
     const {error} = await supabaseClient.auth.resetPasswordForEmail(email,{
       redirectTo: REDIRECT_URL
     });
+
     if (error) throw error;
-    showMessage("forgotMsg","If this email is registered, a recovery email has been sent. Open the link using this same website address.","success");
+
+    showMessage(
+      "forgotMsg",
+      "If this email is registered, a recovery email has been sent. Open the link using this website.",
+      "success"
+    );
+
   } catch(error) {
     showMessage("forgotMsg",error.message,"error");
   } finally {
@@ -361,25 +616,41 @@ async function sendPasswordReset(event) {
 
 async function updatePassword(event) {
   event.preventDefault();
+
   const password = document.getElementById("newPassword").value;
   const confirm = document.getElementById("confirmPassword").value;
+
   if (password.length < 8) {
     showMessage("resetMsg","Password must be at least 8 characters.","error");
     return;
   }
+
   if (password !== confirm) {
-    showMessage("resetMsg","The passwords do not match.","error");
+    showMessage("resetMsg","Passwords do not match.","error");
     return;
   }
+
   const button = event.target.querySelector("button");
   const old = button.textContent;
+
   button.disabled = true;
   button.textContent = "Updating...";
+
   try {
     const {error} = await supabaseClient.auth.updateUser({password});
+
     if (error) throw error;
+
+    await supabaseClient.auth.signOut();
+
     event.target.reset();
-    showMessage("resetMsg","Password updated successfully. You can now return to login and sign in with your new password.","success");
+
+    showMessage(
+      "resetMsg",
+      "Password updated successfully. Please return to login and sign in with your new password.",
+      "success"
+    );
+
   } catch(error) {
     showMessage("resetMsg",error.message,"error");
   } finally {
@@ -388,18 +659,22 @@ async function updatePassword(event) {
   }
 }
 
+/* REGISTRATION */
 async function register(event,role) {
   event.preventDefault();
+
   const form = event.target;
   const button = form.querySelector("button");
   const old = button.textContent;
+
   button.disabled = true;
   button.textContent = "Please wait...";
+
   const val = id => document.getElementById(id).value.trim();
   const passenger = role === "passenger";
+
   const metadata = passenger ? {
-    full_name:val("pName"),
-    phone:val("pPhone"),
+    full_name:val("pName"),phone:val("pPhone"),
     role:"passenger"
   } : {
     full_name:val("dName"),
@@ -409,24 +684,33 @@ async function register(event,role) {
     vehicle_category:val("dCategory"),
     vehicle_registration:val("dPlate")
   };
+
   const msgId = passenger ? "pRegisterMsg" : "dRegisterMsg";
+
   try {
     const {data,error} = await supabaseClient.auth.signUp({
       email:val(passenger ? "pEmail" : "dEmail"),
-      password:document.getElementById(passenger ? "pPassword" : "dPassword").value,
+      password:document.getElementById(
+        passenger ? "pPassword" : "dPassword"
+      ).value,
       options:{
         data:metadata,
         emailRedirectTo:REDIRECT_URL
       }
     });
+
     if (error) throw error;
+
     form.reset();
-    showMessage(msgId,
+
+    showMessage(
+      msgId,
       data.session
         ? "Account created. You can now sign in."
         : "Registration received. Please confirm your email, then log in. New driver applications start as pending.",
       "success"
     );
+
   } catch(error) {
     showMessage(msgId,error.message,"error");
   } finally {
@@ -435,18 +719,29 @@ async function register(event,role) {
   }
 }
 
+/* LOGIN */
 async function login(event,role) {
   event.preventDefault();
-  const prefix = role === "passenger" ? "p" : role === "driver" ? "d" : "a";
+
+  const prefix = role === "passenger" ? "p" :
+                 role === "driver" ? "d" : "a";
+
   const email = document.getElementById(prefix+"LoginEmail").value.trim();
   const password = document.getElementById(prefix+"LoginPassword").value;
+
   const button = event.target.querySelector("button");
   const old = button.textContent;
+
   button.disabled = true;
   button.textContent = "Please wait...";
+
   try {
-    const {data,error} = await supabaseClient.auth.signInWithPassword({email,password});
+    const {data,error} = await supabaseClient.auth.signInWithPassword({
+      email,password
+    });
+
     if (error) throw error;
+
     const user = data.user;
 
     if (role === "admin") {
@@ -455,13 +750,19 @@ async function login(event,role) {
         await supabaseClient.auth.signOut();
         throw new Error("This account does not have administrator permission. Check the admin SQL setup.");
       }
+
       await loadAdmin();
       return;
     }
 
     const {data:profile,error:profileError} = await supabaseClient
-      .from("profiles").select("*").eq("id",user.id).single();
+      .from("profiles")
+      .select("*")
+      .eq("id",user.id)
+      .single();
+
     if (profileError) throw profileError;
+
     if (profile.role !== role) {
       await supabaseClient.auth.signOut();
       throw new Error("This account is not registered as a "+role+".");
@@ -469,31 +770,56 @@ async function login(event,role) {
 
     if (role === "passenger") {
       dashboard("pDash");
-      document.getElementById("pWelcome").textContent = "Welcome, "+(profile.full_name || "Passenger");
+
+      document.getElementById("pWelcome").textContent =
+        "Welcome, "+(profile.full_name || "Passenger");
+
+      toggleSchedule();
+      calculateRideFare();
+      await loadPassengerBookings();
+
     } else {
       dashboard("dDash");
-      document.getElementById("dWelcome").textContent = "Welcome, "+(profile.full_name || "Driver");
-      const status = ["pending","approved","rejected"].includes(profile.approval_status)
-        ? profile.approval_status : "pending";
+
+      document.getElementById("dWelcome").textContent =
+        "Welcome, "+(profile.full_name || "Driver");
+
+      const status = ["pending","approved","rejected"].includes(
+        profile.approval_status
+      ) ? profile.approval_status : "pending";
+
       const statusBox = document.getElementById("dStatus");
       statusBox.replaceChildren();
+
       const line = document.createElement("p");
-      line.append("Application status: ");
+      line.append("Application status:  ");
+
       const pill = document.createElement("span");
       pill.className = "pill "+status;
       pill.textContent = status.toUpperCase();
+
       line.appendChild(pill);
+
       const description = document.createElement("p");
-      description.textContent = status === "approved"
-        ? "Your application is approved. Dispatch will be enabled after the booking system is built."
+      description.textContent =
+        status === "approved"
+        ? "Your application is approved. Ride dispatch will be enabled after the dispatch system is developed."
         : status === "rejected"
         ? "Your application was rejected. Please contact support."
         : "Your application is awaiting admin review. You cannot accept rides yet.";
+
       statusBox.append(line,description);
-      document.getElementById("dVehicleInfo").textContent = profile.vehicle_model || "Not provided";
-      document.getElementById("dCategoryInfo").textContent = profile.vehicle_category || "Not provided";
-      document.getElementById("dPlateInfo").textContent = profile.vehicle_registration || "Not provided";
+
+      document.getElementById("dVehicleInfo").textContent =
+        profile.vehicle_model || "Not provided";
+
+      document.getElementById("dCategoryInfo").textContent =
+        profile.vehicle_category || "Not provided";
+
+      document.getElementById("dPlateInfo").textContent =
+        profile.vehicle_registration || "Not provided";
     }
+
   } catch(error) {
     showMessage(prefix+"LoginMsg",error.message,"error");
   } finally {
@@ -502,8 +828,185 @@ async function login(event,role) {
   }
 }
 
+/* PASSENGER BOOKING */
+function toggleSchedule() {
+  const scheduled =
+    document.getElementById("rideTiming").value === "scheduled";
+  document.getElementById("scheduleBox").classList.toggle(
+    "hidden",!scheduled
+  );
+
+  document.getElementById("rideDate").required = scheduled;
+}
+
+function calculateRideFare() {
+  const miles = Number(document.getElementById("rideMiles").value) || 0;
+  const minutes = Number(document.getElementById("rideMinutes").value) || 0;
+
+  const distance = miles * PRICE_PER_MILE;
+  const time = minutes * PRICE_PER_MINUTE;
+  const total = BASE_FARE + distance + time;
+
+  document.getElementById("distanceCost").textContent =
+    "Distance fare: $" + distance.toFixed(2);
+
+  document.getElementById("timeCost").textContent =
+    "Time fare: $" + time.toFixed(2);
+
+  document.getElementById("fareTotal").textContent =
+    "$" + total.toFixed(2) + " USD (provisional estimate)";
+}
+
+async function createBooking(event) {
+  event.preventDefault();
+
+  const button = document.getElementById("bookRideButton");
+  const oldText = button.textContent;
+
+  button.disabled = true;
+  button.textContent = "Submitting request...";
+  try {
+    const miles = Number(document.getElementById("rideMiles").value);
+    const minutes = Number(document.getElementById("rideMinutes").value);
+    const timing = document.getElementById("rideTiming").value;
+
+    if (!Number.isFinite(miles) || miles <= 0 || miles > 1000 ||
+        !Number.isInteger(minutes) || minutes <= 0 || minutes > 2000) {
+      throw new Error("Enter a valid estimated distance and travel time.");
+    }
+
+    let pickupDate;
+
+    if (timing === "scheduled") {
+      const value = document.getElementById("rideDate").value;
+
+      if (!value) {
+        throw new Error("Please select a scheduled pickup date and time.");
+      }
+
+      pickupDate = new Date(value);
+    } else {
+      pickupDate = new Date(Date.now() + 15 * 60 * 1000);
+    }
+
+    if (Number.isNaN(pickupDate.getTime()) || pickupDate <= new Date()) {
+      throw new Error("Pickup time must be in the future.");
+    }
+
+    const pickup = document.getElementById("ridePickup").value.trim();
+    const dropoff = document.getElementById("rideDropoff").value.trim();
+    const vehicle = document.getElementById("rideVehicle").value;
+
+    const {data,error} = await supabaseClient.rpc(
+      "create_passenger_booking",
+      {
+        p_pickup:pickup,
+        p_dropoff:dropoff,
+        p_pickup_datetime:pickupDate.toISOString(),
+        p_booking_timing:timing,
+        p_vehicle_category:vehicle,
+        p_distance_miles:miles,
+        p_duration_minutes:minutes
+      }
+    );
+
+    if (error) throw error;
+
+    showMessage(
+      "bookingMsg",
+      "Your ride request has been submitted. Reference: "+data+
+      ". This is a request, not a confirmed driver assignment.",
+      "success"
+    );
+
+    event.target.reset();
+    toggleSchedule();
+    calculateRideFare();
+
+    await loadPassengerBookings();
+
+  } catch(error) {
+    showMessage("bookingMsg",error.message,"error");
+  } finally {
+    button.disabled = false;
+    button.textContent = oldText;
+  }
+}
+
+/* PASSENGER BOOKING HISTORY */
+async function loadPassengerBookings() {
+  const list = document.getElementById("passengerBookingList");
+  if (!list) return;
+
+  list.textContent = "Loading bookings...";
+
+  try {
+    const {data:{user},error:userError} =
+      await supabaseClient.auth.getUser();
+
+    if (userError || !user) {
+      throw new Error("Please sign in again.");
+    }
+
+    const {data,error} = await supabaseClient
+      .from("bookings")
+      .select("id,pickup_address,dropoff_address,pickup_datetime,vehicle_category,total_fare,currency,booking_status")
+      .eq("passenger_id",user.id)
+      .order("created_at",{ascending:false});
+
+    if (error) throw error;
+
+    list.replaceChildren();
+
+    if (!data || data.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = "You have not submitted any ride requests yet.";
+      list.appendChild(empty);
+      return;
+    }
+
+    data.forEach(booking => {
+      const card = document.createElement("div");
+      card.className = "row";
+
+      const info = document.createElement("div");
+      info.className = "info";
+
+      const title = document.createElement("strong");
+      title.textContent =
+        booking.pickup_address+" → "+booking.dropoff_address;
+
+      const detail = document.createElement("small");
+      detail.textContent =
+        booking.vehicle_category+" | "+
+        new Date(booking.pickup_datetime).toLocaleString();
+
+      const price = document.createElement("small");
+      price.textContent =
+        "Provisional fare: $"+
+        Number(booking.total_fare).toFixed(2)+" "+booking.currency;
+
+      const status = document.createElement("span");
+      status.className = "pill";
+      status.textContent =
+        (booking.booking_status || "pending").toUpperCase();
+
+      info.append(title,detail,price,status);
+      card.appendChild(info);
+      list.appendChild(card);
+    });
+
+  } catch(error) {
+    list.textContent = error.message;
+  }
+}
+
+/* ADMIN DRIVER MANAGEMENT */
 async function loadAdmin() {
-  const {data:{user},error:userError} = await supabaseClient.auth.getUser();
+  const {data:{user},error:userError} =
+    await supabaseClient.auth.getUser();
+
   if (userError || !user ||
       user.app_metadata?.role !== "admin" ||
       user.email?.toLowerCase() !== ADMIN_EMAIL) {
@@ -511,9 +1014,12 @@ async function loadAdmin() {
   }
 
   dashboard("aDash");
+
   const list = document.getElementById("driverList");
   list.textContent = "Loading applications...";
-  const {data,error} = await supabaseClient.from("profiles")
+
+  const {data,error} = await supabaseClient
+    .from("profiles")
     .select("id,full_name,phone,role,approval_status,vehicle_model,vehicle_category,vehicle_registration,created_at")
     .eq("role","driver")
     .order("created_at",{ascending:false});
@@ -524,6 +1030,7 @@ async function loadAdmin() {
   }
 
   list.replaceChildren();
+
   if (!data || data.length === 0) {
     const empty = document.createElement("div");
     empty.className = "empty";
@@ -535,24 +1042,33 @@ async function loadAdmin() {
   data.forEach(driver => {
     const row = document.createElement("div");
     row.className = "row";
+
     const info = document.createElement("div");
     info.className = "info";
+
     const name = document.createElement("strong");
     name.textContent = driver.full_name || "Driver";
+
     const detail = document.createElement("small");
-    detail.textContent = "Phone: "+(driver.phone||"—")+
-      " | Vehicle: "+(driver.vehicle_model||"—")+
-      " | Category: "+(driver.vehicle_category||"—")+
-      " | Plate: "+(driver.vehicle_registration||"—");
-    const status = ["pending","approved","rejected"].includes(driver.approval_status)
-      ? driver.approval_status : "pending";
+    detail.textContent =
+      "Phone: "+(driver.phone || "—")+
+      " | Vehicle: "+(driver.vehicle_model || "—")+
+      " | Category: "+(driver.vehicle_category || "—")+
+      " | Plate: "+(driver.vehicle_registration || "—");
+
+    const status = ["pending","approved","rejected"].includes(
+      driver.approval_status
+    ) ? driver.approval_status : "pending";
+
     const pill = document.createElement("span");
     pill.className = "pill "+status;
     pill.textContent = status.toUpperCase();
+
     info.append(name,detail,pill);
 
     const actions = document.createElement("div");
     actions.className = "actions";
+
     const approve = document.createElement("button");
     approve.className = "small";
     approve.textContent = "Approve";
@@ -578,53 +1094,107 @@ async function setApproval(driverId,status) {
       p_status:status
     });
     if (error) throw error;
-    showMessage("aMsg","Driver application updated: "+status.toUpperCase(),"success");
+
+    showMessage(
+      "aMsg",
+      "Driver application updated: "+status.toUpperCase(),
+      "success"
+    );
+
     await loadAdmin();
+
   } catch(error) {
     showMessage("aMsg",error.message,"error");
   }
 }
 
+/* LOGOUT */
 async function logout() {
-  await supabaseClient.auth.signOut();
+  const {error} = await supabaseClient.auth.signOut();
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
   backHome();
 }
 
-/* Handle Supabase password recovery links. */
+/* PASSWORD RECOVERY EVENT */
 supabaseClient.auth.onAuthStateChange((event,session) => {
   if (event === "PASSWORD_RECOVERY") {
     showForm("resetForm");
   }
 });
 
-/* Also handle a recovery link if the session was restored before
-   the page's event listener was ready. */
+/* INITIAL PAGE LOAD */
 async function initialiseApp() {
   const params = new URLSearchParams(window.location.search);
-  const hash = new URLSearchParams(window.location.hash.replace(/^#/,""));
-  const isRecovery = params.get("type") === "recovery" ||
-                     hash.get("type") === "recovery";
+  const hash = new URLSearchParams(
+    window.location.hash.replace(/^#/,"")
+  );
 
-  if (isRecovery) {
+  if (params.get("type") === "recovery" ||
+      hash.get("type") === "recovery") {
     showForm("resetForm");
     return;
   }
 
   const {data,error} = await supabaseClient.auth.getSession();
+
   if (error || !data.session) return;
 
   const user = data.session.user;
+
   if (user.app_metadata?.role === "admin" &&
       user.email?.toLowerCase() === ADMIN_EMAIL) {
     try {
       await loadAdmin();
-    } catch(err) {
-      console.error(err);
+    } catch(error) {
+      console.error(error);
     }
+    return;
+  }
+
+  const {data:profile,error:profileError} = await supabaseClient
+    .from("profiles")
+    .select("*")
+    .eq("id",user.id)
+    .maybeSingle();
+
+  if (profileError || !profile) return;
+
+  if (profile.role === "passenger") {
+    dashboard("pDash");
+    document.getElementById("pWelcome").textContent =
+      "Welcome, "+(profile.full_name || "Passenger");
+
+    toggleSchedule();
+    calculateRideFare();
+    await loadPassengerBookings();
+  }
+
+  if (profile.role === "driver") {
+    dashboard("dDash");
+    document.getElementById("dWelcome").textContent =
+      "Welcome, "+(profile.full_name || "Driver");
+
+    const status = profile.approval_status || "pending";
+    const statusBox = document.getElementById("dStatus");
+
+    statusBox.textContent = "Application status: "+status.toUpperCase();
+
+    document.getElementById("dVehicleInfo").textContent =
+      profile.vehicle_model || "Not provided";
+    document.getElementById("dCategoryInfo").textContent =
+      profile.vehicle_category || "Not provided";
+    document.getElementById("dPlateInfo").textContent =
+      profile.vehicle_registration || "Not provided";
   }
 }
 
 initialiseApp();
 </script>
+
 </body>
 </html>
