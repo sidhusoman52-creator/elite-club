@@ -675,14 +675,15 @@ function statusBadge(status) {
 }
 
 function toggleSchedule() {
-  const timing = document.getElementById("bookingTiming")?.value;
+  const timing = document.getElementById("rideTiming")?.value;
   const scheduleBox = document.getElementById("scheduleBox");
 
   if (scheduleBox) {
-    scheduleBox.style.display = timing === "scheduled" ? "block" : "none";
+    scheduleBox.classList.toggle("hidden", timing !== "scheduled");
   }
 
   const dateInput = document.getElementById("rideDate");
+
   if (dateInput) {
     const minimum = new Date(Date.now() + 30 * 60000);
     const localMinimum = new Date(
@@ -693,72 +694,91 @@ function toggleSchedule() {
   }
 
   calculateRideFare();
-}
+  }
 
 function calculateRideFare() {
-  const distance = Number(document.getElementById("distanceMiles")?.value || 0);
-  const duration = Number(document.getElementById("durationMinutes")?.value || 0);
-  const output = document.getElementById("fareEstimate");
+  const distance = Number(
+    document.getElementById("rideMiles")?.value || 0
+  );
 
-  const estimatedFare = 10 + (distance * 2) + (duration * 0.5);
+  const duration = Number(
+    document.getElementById("rideMinutes")?.value || 0
+  );
 
-  if (output) {
-    output.textContent = money(estimatedFare);
+  const distanceCost = distance * 2;
+  const timeCost = duration * 0.5;
+  const totalFare = 10 + distanceCost + timeCost;
+
+  const distanceOutput = document.getElementById("distanceCost");
+  const timeOutput = document.getElementById("timeCost");
+  const totalOutput = document.getElementById("fareTotal");
+
+  if (distanceOutput) {
+    distanceOutput.textContent = "Distance fare: " + money(distanceCost);
+  }
+
+  if (timeOutput) {
+    timeOutput.textContent = "Time fare: " + money(timeCost);
+  }
+
+  if (totalOutput) {
+    totalOutput.textContent = money(totalFare) + " USD";
   }
 }
 
 async function createBooking(event) {
   event.preventDefault();
 
+  const msg = document.getElementById("bookingMsg");
+  const button = document.getElementById("bookRideButton");
+
+  function bookingMessage(message, type) {
+    if (msg) {
+      msg.textContent = message;
+      msg.className = "msg " + (type || "");
+    }
+  }
+
   if (!currentUser) {
-    showMessage("Please log in before booking a ride.", "error");
+    bookingMessage("Please log in before booking.", "error");
     return;
   }
 
-  const button = event.submitter;
   if (button) {
     button.disabled = true;
     button.textContent = "Submitting...";
   }
 
   try {
-    const pickup = document.getElementById("pickupAddress")?.value.trim();
-    const dropoff = document.getElementById("dropoffAddress")?.value.trim();
-    const timing = document.getElementById("bookingTiming")?.value || "now";
-    const vehicle = document.getElementById("vehicleCategory")?.value;
-    const rideType = document.getElementById("rideType")?.value || "city";
-    const distance = Number(document.getElementById("distanceMiles")?.value || 0);
-    const duration = Number(document.getElementById("durationMinutes")?.value || 0);
+    const pickup = document.getElementById("ridePickup").value.trim();
+    const dropoff = document.getElementById("rideDropoff").value.trim();
+    const timing = document.getElementById("rideTiming").value;
+    const vehicle = document.getElementById("rideVehicle").value;
+    const rideType = document.getElementById("rideType").value;
+    const distance = Number(document.getElementById("rideMiles").value);
+    const duration = Number(document.getElementById("rideMinutes").value);
 
     if (!pickup || !dropoff) {
-      throw new Error("Please enter both pickup and drop-off addresses.");
+      throw new Error("Enter pickup and destination addresses.");
     }
 
-    if (!["city", "airport", "long_distance"].includes(rideType)) {
-      throw new Error("Please select a valid ride type.");
-    }
-
-    if (!vehicle) {
-      throw new Error("Please select a vehicle category.");
-    }
-
-    if (distance <= 0 || duration <= 0) {
-      throw new Error("Please enter a valid estimated distance and duration.");
+    if (!vehicle || distance <= 0 || duration <= 0) {
+      throw new Error("Enter a vehicle, valid distance and travel time.");
     }
 
     let pickupDateTime;
 
     if (timing === "scheduled") {
-      const selectedDate = document.getElementById("rideDate")?.value;
+      const selectedDate = document.getElementById("rideDate").value;
 
       if (!selectedDate) {
-        throw new Error("Please select your scheduled pickup date and time.");
+        throw new Error("Please select your pickup date and time.");
       }
 
       pickupDateTime = new Date(selectedDate).toISOString();
 
       if (new Date(pickupDateTime).getTime() < Date.now() + 30 * 60000) {
-        throw new Error("Scheduled rides must be booked at least 30 minutes ahead.");
+        throw new Error("Please schedule at least 30 minutes ahead.");
       }
     } else {
       pickupDateTime = new Date(Date.now() + 15 * 60000).toISOString();
@@ -780,25 +800,26 @@ async function createBooking(event) {
 
     if (error) throw error;
 
-    showMessage("Your ride request has been submitted successfully.", "success");
+    bookingMessage("Ride request submitted successfully!", "success");
 
-    document.getElementById("bookingForm")?.reset();
-    toggleSchedule();
+    document.querySelector('#pDash form')?.reset();
+
     calculateRideFare();
     await loadPassengerBookings();
 
   } catch (error) {
-    showMessage(error.message || "Unable to submit your booking.", "error");
+    bookingMessage(error.message || "Booking failed.", "error");
   } finally {
     if (button) {
       button.disabled = false;
-      button.textContent = "Book Your Ride";
+      button.textContent = "Submit Ride Request";
     }
   }
-}
+  }
 
 async function loadPassengerBookings() {
-  const container = document.getElementById("passengerBookings");
+  const container = document.getElementById("passengerBookingList");
+
   if (!container || !currentUser) return;
 
   container.innerHTML = "<p>Loading your bookings...</p>";
@@ -810,22 +831,22 @@ async function loadPassengerBookings() {
 
   if (error) {
     container.innerHTML = "<p>Unable to load bookings.</p>";
+    showMessage(error.message, "error");
     return;
   }
 
   if (!data || data.length === 0) {
-    container.innerHTML = "<p>You have no bookings yet.</p>";
+    container.innerHTML =
+      '<div class="empty">Your bookings will appear here.</div>';
     return;
   }
 
   container.innerHTML = data.map(booking => `
     <div class="booking-card">
-      <div class="card-heading">
-        <strong>${escapeHtml(booking.ride_type || "city").replaceAll("_", " ")} ride</strong>
-        ${statusBadge(booking.booking_status)}
-      </div>
+      <h3>${escapeHtml(booking.ride_type || "city").replaceAll("_", " ")} ride</h3>
+      <p>${statusBadge(booking.booking_status)}</p>
       <p><strong>Pickup:</strong> ${escapeHtml(booking.pickup_address)}</p>
-      <p><strong>Drop-off:</strong> ${escapeHtml(booking.dropoff_address)}</p>
+      <p><strong>Destination:</strong> ${escapeHtml(booking.dropoff_address)}</p>
       <p><strong>Vehicle:</strong> ${escapeHtml(booking.vehicle_category)}</p>
       <p><strong>Pickup time:</strong> ${formatDate(booking.pickup_datetime)}</p>
       <p><strong>Booking type:</strong> ${escapeHtml(booking.booking_timing)}</p>
@@ -864,7 +885,7 @@ function renderDriverProfile(profile) {
 }
 
 async function loadDriverBookings() {
-  const container = document.getElementById("driverBookings");
+  const container = document.getElementById("driverBookingList");
   if (!container || !currentUser) return;
 
   container.innerHTML = "<p>Loading available rides...</p>";
