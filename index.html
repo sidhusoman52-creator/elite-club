@@ -977,17 +977,20 @@ async function completeRide(id) {
 }
 
 async function loadAdmin() {
-  const driverContainer = document.getElementById("adminDrivers");
+  const driverContainer = document.getElementById("driverList");
+
   if (driverContainer) {
     driverContainer.innerHTML = "<p>Loading driver applications...</p>";
   }
 
   await loadAdminDrivers();
   await loadAdminBookings();
-}
+  }
 
 async function loadAdminDrivers() {
-  const container = document.getElementById("adminDrivers");
+  const container = document.getElementById("driverList");
+  const message = document.getElementById("aMsg");
+
   if (!container) return;
 
   const { data, error } = await supabaseClient
