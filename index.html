@@ -13,18 +13,12 @@
   --panel:#151515;
   --muted:#aaa;
   --line:#393127;
-  --green:#173b25;
-  --red:#492020;
 }
 * {box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
 body {background:var(--bg);color:#fff;min-height:100vh}
 header {
-  padding:20px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  border-bottom:1px solid #292929
+  padding:20px 6%;display:flex;justify-content:space-between;
+  align-items:center;gap:12px;border-bottom:1px solid #292929
 }
 .logo {color:var(--gold);font-size:27px;font-weight:bold;letter-spacing:3px}
 .tag {color:#aaa;font-size:12px;margin-top:6px;letter-spacing:1px}
@@ -35,38 +29,25 @@ main {max-width:1100px;margin:auto;padding:35px 16px 60px}
 .gold {color:var(--gold)}
 p {color:var(--muted);line-height:1.6;font-size:14px}
 .roles,.grid {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:18px;
-  max-width:850px;
-  margin:auto
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;max-width:850px;margin:auto
 }
 .card,.panel,.form {
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:24px
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:24px
 }
 .card {text-align:center}
 .ico {font-size:40px;margin-bottom:12px}
 .card h2,.form h2,.panel h2 {color:var(--gold);margin-bottom:10px}
 .card p {margin:10px 0 18px}
 button {
-  background:var(--gold);
-  color:#111;
-  border:0;
-  border-radius:7px;
-  padding:13px 15px;
-  font-weight:bold;
-  width:100%;
-  cursor:pointer
+  background:var(--gold);color:#111;border:0;border-radius:7px;
+  padding:13px 15px;font-weight:bold;width:100%;cursor:pointer
 }
 button:disabled {opacity:.5;cursor:not-allowed}
 .outline {
-  background:transparent;
-  color:var(--gold);
-  border:1px solid var(--gold);
-  margin-top:12px
+  background:transparent;color:var(--gold);
+  border:1px solid var(--gold);margin-top:12px
 }
 .danger {background:#8d3030;color:white}
 .small {width:auto;padding:9px 12px;font-size:12px}
@@ -75,97 +56,60 @@ button:disabled {opacity:.5;cursor:not-allowed}
 .sub {margin:8px 0 18px}
 label {display:block;color:#ddd;font-size:13px;margin:14px 0 7px}
 input,select {
-  width:100%;
-  padding:13px;
-  background:#080808;
-  color:white;
-  border:1px solid #444;
-  border-radius:6px;
-  font-size:15px
+  width:100%;padding:13px;background:#080808;color:white;
+  border:1px solid #444;border-radius:6px;font-size:15px
 }
 input:focus,select:focus {outline:1px solid var(--gold);border-color:var(--gold)}
 form button {margin-top:20px}
 .switch {text-align:center;margin-top:18px;font-size:13px}
 .switch a {color:var(--gold);text-decoration:underline;cursor:pointer}
 .msg {
-  display:none;
-  padding:12px;
-  margin-top:14px;
-  border-radius:6px;
-  font-size:13px;
-  overflow-wrap:anywhere;
-  line-height:1.5
+  display:none;padding:12px;margin-top:14px;border-radius:6px;
+  font-size:13px;overflow-wrap:anywhere;line-height:1.5
 }
 .msg.show {display:block}
 .success {background:#17331f;color:#b8efc5}
 .error {background:#421d1d;color:#ffc1c1}
 .dash {display:none}
 .head {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:20px
+  display:flex;justify-content:space-between;align-items:center;
+  gap:12px;flex-wrap:wrap;margin-bottom:20px
 }
 .head h1 {color:var(--gold);font-size:clamp(24px,4vw,34px)}
 .grid {max-width:none}
 .panel h2 {font-size:20px}
 .pill {
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:11px;
-  background:#40351f;
-  color:#ffdc8c;
-  margin:8px 0
+  display:inline-block;padding:6px 10px;border-radius:20px;
+  font-size:11px;background:#40351f;color:#ffdc8c;margin:8px 0
 }
-.approved {background:#173b25;color:#b8efc5}
-.rejected {background:#492020;color:#ffc1c1}
+.approved,.completed {background:#173b25;color:#b8efc5}
+.rejected,.cancelled {background:#492020;color:#ffc1c1}
 .note {
-  border-left:3px solid var(--gold);
-  padding:12px;
-  background:#201b12;
-  color:#d9c49c;
-  font-size:13px;
-  line-height:1.6;
-  margin-top:14px
+  border-left:3px solid var(--gold);padding:12px;background:#201b12;
+  color:#d9c49c;font-size:13px;line-height:1.6;margin-top:14px
 }
 .row {
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:12px;
-  flex-wrap:wrap;
-  padding:15px 0;
-  border-top:1px solid var(--line)
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:12px;flex-wrap:wrap;padding:15px 0;border-top:1px solid var(--line)
 }
 .info {flex:1;min-width:180px}
 .info strong,.info small {display:block}
 .info small {color:var(--muted);line-height:1.6;margin:5px 0}
-.actions {display:flex;gap:7px}
+.actions {display:flex;gap:7px;flex-wrap:wrap}
 .empty {
-  padding:15px;
-  border:1px dashed #51432d;
-  border-radius:8px;
-  color:var(--muted)
+  padding:15px;border:1px dashed #51432d;
+  border-radius:8px;color:var(--muted)
 }
 .hidden {display:none!important}
 .pricebox {
-  border:1px solid var(--line);
-  padding:18px;
-  border-radius:10px;
-  margin-top:16px
+  border:1px solid var(--line);padding:18px;
+  border-radius:10px;margin-top:16px
 }
 .pricebox h2 {font-size:25px;margin-top:12px}
 hr {border:0;border-top:1px solid var(--line)}
 footer {
-  text-align:center;
-  padding:24px;
-  border-top:1px solid #292929;
-  color:#777;
-  font-size:12px;
-  line-height:1.8
+  text-align:center;padding:24px;border-top:1px solid #292929;
+  color:#777;font-size:12px;line-height:1.8
 }
 @media(max-width:650px) {
   header {padding:16px 5%}
@@ -178,7 +122,6 @@ footer {
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -190,7 +133,6 @@ footer {
 </header>
 
 <main>
-
 <section class="intro" id="intro">
   <h1>Welcome to <span class="gold">ELITE CLUB</span></h1>
   <p>Your journey begins here. Premium travel, elevated service.</p>
@@ -203,14 +145,12 @@ footer {
     <p>Book airport transfers, city rides and long-distance journeys.</p>
     <button onclick="showForm('pLogin')">Continue as Passenger</button>
   </div>
-
   <div class="card">
     <div class="ico">🚖</div>
     <h2>I'm a Driver</h2>
     <p>Register your vehicle and apply to drive with ELITE CLUB.</p>
     <button onclick="showForm('dLogin')">Continue as Driver</button>
   </div>
-
   <div class="card">
     <div class="ico">🛡️</div>
     <h2>Administrator</h2>
@@ -357,18 +297,22 @@ footer {
     </div>
     <button class="outline small" onclick="logout()">Log out</button>
   </div>
-
   <div class="grid">
     <div class="panel">
       <h2>Book Your Premium Ride</h2>
       <p>Airport transfers, city journeys and long-distance rides — all in one place.</p>
-
       <form onsubmit="createBooking(event)">
         <label>Pickup location</label>
         <input id="ridePickup" placeholder="Enter pickup address" required>
-
         <label>Destination</label>
         <input id="rideDropoff" placeholder="Enter destination address" required>
+
+        <label>Ride type</label>
+        <select id="rideType" required>
+          <option value="city">City Ride</option>
+          <option value="airport">Airport Transfer</option>
+          <option value="long_distance">Long Distance</option>
+        </select>
 
         <label>Vehicle category</label>
         <select id="rideVehicle" required>
@@ -384,7 +328,6 @@ footer {
           <option value="now">Book now</option>
           <option value="scheduled">Schedule for later</option>
         </select>
-
         <div id="scheduleBox" class="hidden">
           <label>Pickup date and time</label>
           <input id="rideDate" type="datetime-local">
@@ -394,10 +337,8 @@ footer {
           <strong>Important fare information</strong><br>
           Live route calculation is not connected yet. Enter your estimated journey distance and travel time below. These estimates are not independently verified.
         </div>
-
         <label>Estimated distance (miles)</label>
         <input id="rideMiles" type="number" min="0.1" max="1000" step="0.1" placeholder="Example: 10" oninput="calculateRideFare()" required>
-
         <label>Estimated travel time (minutes)</label>
         <input id="rideMinutes" type="number" min="1" max="2000" step="1" placeholder="Example: 20" oninput="calculateRideFare()" required>
 
@@ -410,14 +351,11 @@ footer {
           <h2 id="fareTotal">$10.00 USD</h2>
           <p>Provisional estimate only. This is not a guaranteed final fare.</p>
         </div>
-
         <div class="note">
           Tolls, taxes, airport fees, parking and other surcharges are not included. Any applicable extra charges must be disclosed before a final price is confirmed.
         </div>
-
         <button type="submit" id="bookRideButton">Submit Ride Request</button>
       </form>
-
       <div id="bookingMsg" class="msg"></div>
     </div>
 
@@ -441,7 +379,6 @@ footer {
     </div>
     <button class="outline small" onclick="logout()">Log out</button>
   </div>
-
   <div class="grid">
     <div class="panel">
       <h2>Application status</h2>
@@ -451,9 +388,12 @@ footer {
       <p>Registration: <strong id="dPlateInfo"></strong></p>
     </div>
     <div class="panel">
-      <h2>Ride requests</h2>
-      <p>Driver dispatch and availability will be connected in a later development stage.</p>
-      <div class="note">Only approved drivers should be eligible for ride requests. Server-side dispatch controls are not yet implemented.</div>
+      <h2>Ride dispatch</h2>
+      <p>Available ride requests and your assigned journeys.</p>
+      <button class="outline" type="button" onclick="loadDriverBookings()">Refresh rides</button>
+      <div id="driverBookingList" style="margin-top:16px">
+        <div class="empty">Ride requests will appear here.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -463,20 +403,24 @@ footer {
   <div class="head">
     <div>
       <h1>Admin Dashboard</h1>
-      <p>Review driver applications and approval status.</p>
+      <p>Manage drivers, bookings and platform operations.</p>
     </div>
     <button class="outline small" onclick="logout()">Log out</button>
   </div>
-
   <div class="panel">
     <h2>Driver applications</h2>
     <div id="aMsg" class="msg"></div>
-    <div id="driverList">
-      <div class="empty">Loading applications...</div>
+    <div id="driverList"><div class="empty">Loading applications...</div></div>
+  </div>
+  <div class="panel" style="margin-top:18px">
+    <h2>Booking management</h2>
+    <p>Review ride requests, assign approved drivers and update booking status.</p>
+    <button class="outline" type="button" onclick="loadAdminBookings()">Refresh bookings</button>
+    <div id="adminBookingList" style="margin-top:16px">
+      <div class="empty">Bookings will appear here.</div>
     </div>
   </div>
 </section>
-
 </main>
 
 <footer>
@@ -485,7 +429,6 @@ footer {
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
 "use strict";
 
@@ -495,706 +438,763 @@ const SUPABASE_KEY = "sb_publishable_SmeD_22mi0H-4ISHrk2jjA_ZSnnVnFb";
 const ADMIN_EMAIL = "sidhusoman52@gmail.com";
 const REDIRECT_URL = "https://elite-club-red.vercel.app";
 
-/* PRICING CONFIGURATION */
+/* PROVISIONAL PRICING */
 const BASE_FARE = 10;
 const PRICE_PER_MILE = 2;
 const PRICE_PER_MINUTE = 0.50;
-const PLATFORM_COMMISSION = 0.10;
 
 if (!window.supabase) {
-  document.body.innerHTML = "<p style='padding:30px;color:white'>Unable to load the booking service. Please refresh.</p>";
+  document.body.innerHTML =
+    "<p style='padding:30px;color:white'>Unable to load booking service. Please refresh.</p>";
   throw new Error("Supabase library failed to load.");
 }
 
 const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY,
-  {
-    auth: {
-      flowType: "pkce",
-      autoRefreshToken: true,
-      persistSession: true,
-      detectSessionInUrl: true
-    }
-  }
+  SUPABASE_URL,SUPABASE_KEY,
+  {auth:{
+    flowType:"pkce",
+    autoRefreshToken:true,
+    persistSession:true,
+    detectSessionInUrl:true
+  }}
 );
 
 /* NAVIGATION */
 function showForm(id) {
   document.getElementById("intro").classList.add("hidden");
   document.getElementById("roles").classList.add("hidden");
-
-  document.querySelectorAll(".form,.dash").forEach(x => {
-    x.classList.remove("active");
-  });
-
-  const target = document.getElementById(id);
-  if (!target) return;
-
+  document.querySelectorAll(".form,.dash").forEach(x=>x.classList.remove("active"));
+  const target=document.getElementById(id);
+  if(!target)return;
   target.classList.add("active");
-
-  document.querySelectorAll(".msg").forEach(x => {
-    x.className = "msg";
-    x.textContent = "";
+  document.querySelectorAll(".msg").forEach(x=>{
+    x.className="msg";
+    x.textContent="";
   });
-
   window.scrollTo(0,0);
 }
-
 function backHome() {
-  document.querySelectorAll(".form,.dash").forEach(x => {
-    x.classList.remove("active");
-  });
-
+  document.querySelectorAll(".form,.dash").forEach(x=>x.classList.remove("active"));
   document.getElementById("intro").classList.remove("hidden");
   document.getElementById("roles").classList.remove("hidden");
-
   window.scrollTo(0,0);
 }
-
 function dashboard(id) {
   document.getElementById("intro").classList.add("hidden");
   document.getElementById("roles").classList.add("hidden");
-
-  document.querySelectorAll(".form,.dash").forEach(x => {
-    x.classList.remove("active");
-  });
-
+  document.querySelectorAll(".form,.dash").forEach(x=>x.classList.remove("active"));
   document.getElementById(id).classList.add("active");
   window.scrollTo(0,0);
 }
-
 function showMessage(id,text,type) {
-  const el = document.getElementById(id);
-  if (!el) return;
-
-  el.textContent = text;
-  el.className = "msg show " + type;
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.textContent=text;
+  el.className="msg show "+type;
 }
 
 /* PASSWORD RECOVERY */
 function openForgot(sourceId) {
-  const source = document.getElementById(sourceId);
-
-  document.getElementById("recoveryEmail").value =
-    source ? source.value.trim() : "";
-
+  const source=document.getElementById(sourceId);
+  document.getElementById("recoveryEmail").value=source?source.value.trim():"";
   showForm("forgotForm");
 }
-
 async function sendPasswordReset(event) {
   event.preventDefault();
-
-  const button = event.target.querySelector("button");
-  const old = button.textContent;
-
-  button.disabled = true;
-  button.textContent = "Sending...";
-
+  const button=event.target.querySelector("button");
+  const old=button.textContent;
+  button.disabled=true;
+  button.textContent="Sending...";
   try {
-    const email = document.getElementById("recoveryEmail").value.trim();
-
-    const {error} = await supabaseClient.auth.resetPasswordForEmail(email,{
-      redirectTo: REDIRECT_URL
+    const email=document.getElementById("recoveryEmail").value.trim();
+    const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{
+      redirectTo:REDIRECT_URL
     });
-
-    if (error) throw error;
-
-    showMessage(
-      "forgotMsg",
+    if(error)throw error;
+    showMessage("forgotMsg",
       "If this email is registered, a recovery email has been sent. Open the link using this website.",
-      "success"
-    );
-
+      "success");
   } catch(error) {
     showMessage("forgotMsg",error.message,"error");
   } finally {
-    button.disabled = false;
-    button.textContent = old;
+    button.disabled=false;
+    button.textContent=old;
   }
 }
-
 async function updatePassword(event) {
   event.preventDefault();
-
-  const password = document.getElementById("newPassword").value;
-  const confirm = document.getElementById("confirmPassword").value;
-
-  if (password.length < 8) {
+  const password=document.getElementById("newPassword").value;
+  const confirm=document.getElementById("confirmPassword").value;
+  if(password.length<8) {
     showMessage("resetMsg","Password must be at least 8 characters.","error");
     return;
   }
-
-  if (password !== confirm) {
+  if(password!==confirm) {
     showMessage("resetMsg","Passwords do not match.","error");
     return;
   }
-
-  const button = event.target.querySelector("button");
-  const old = button.textContent;
-
-  button.disabled = true;
-  button.textContent = "Updating...";
-
+  const button=event.target.querySelector("button");
+  const old=button.textContent;
+  button.disabled=true;
+  button.textContent="Updating...";
   try {
-    const {error} = await supabaseClient.auth.updateUser({password});
-
-    if (error) throw error;
-
+    const {error}=await supabaseClient.auth.updateUser({password});
+    if(error)throw error;
     await supabaseClient.auth.signOut();
-
     event.target.reset();
-
-    showMessage(
-      "resetMsg",
+    showMessage("resetMsg",
       "Password updated successfully. Please return to login and sign in with your new password.",
-      "success"
-    );
-
+      "success");
   } catch(error) {
     showMessage("resetMsg",error.message,"error");
   } finally {
-    button.disabled = false;
-    button.textContent = old;
+    button.disabled=false;
+    button.textContent=old;
   }
 }
 
 /* REGISTRATION */
 async function register(event,role) {
   event.preventDefault();
-
-  const form = event.target;
-  const button = form.querySelector("button");
-  const old = button.textContent;
-
-  button.disabled = true;
-  button.textContent = "Please wait...";
-
-  const val = id => document.getElementById(id).value.trim();
-  const passenger = role === "passenger";
-
-  const metadata = passenger ? {
-    full_name:val("pName"),phone:val("pPhone"),
-    role:"passenger"
-  } : {
-    full_name:val("dName"),
-    phone:val("dPhone"),
-    role:"driver",
-    vehicle_model:val("dVehicle"),
-    vehicle_category:val("dCategory"),
+  const form=event.target;
+  const button=form.querySelector("button");
+  const old=button.textContent;
+  button.disabled=true;
+  button.textContent="Please wait...";
+  const val=id=>document.getElementById(id).value.trim();
+  const passenger=role==="passenger";
+  const metadata=passenger?{
+    full_name:val("pName"),phone:val("pPhone"),role:"passenger"
+  }:{
+    full_name:val("dName"),phone:val("dPhone"),role:"driver",
+    vehicle_model:val("dVehicle"),vehicle_category:val("dCategory"),
     vehicle_registration:val("dPlate")
   };
-
-  const msgId = passenger ? "pRegisterMsg" : "dRegisterMsg";
-
+  const msgId=passenger?"pRegisterMsg":"dRegisterMsg";
   try {
-    const {data,error} = await supabaseClient.auth.signUp({
-      email:val(passenger ? "pEmail" : "dEmail"),
-      password:document.getElementById(
-        passenger ? "pPassword" : "dPassword"
-      ).value,
-      options:{
-        data:metadata,
-        emailRedirectTo:REDIRECT_URL
-      }
+    const {data,error}=await supabaseClient.auth.signUp({
+      email:val(passenger?"pEmail":"dEmail"),
+      password:document.getElementById(passenger?"pPassword":"dPassword").value,
+      options:{data:metadata,emailRedirectTo:REDIRECT_URL}
     });
-
-    if (error) throw error;
-
+    if(error)throw error;
     form.reset();
-
-    showMessage(
-      msgId,
-      data.session
-        ? "Account created. You can now sign in."
-        : "Registration received. Please confirm your email, then log in. New driver applications start as pending.",
-      "success"
-    );
-
+    showMessage(msgId,data.session?
+      "Account created. You can now sign in.":
+      "Registration received. Please confirm your email, then log in. New driver applications start as pending.",
+      "success");
   } catch(error) {
     showMessage(msgId,error.message,"error");
   } finally {
-    button.disabled = false;
-    button.textContent = old;
+    button.disabled=false;
+    button.textContent=old;
   }
 }
 
 /* LOGIN */
 async function login(event,role) {
   event.preventDefault();
-
-  const prefix = role === "passenger" ? "p" :
-                 role === "driver" ? "d" : "a";
-
-  const email = document.getElementById(prefix+"LoginEmail").value.trim();
-  const password = document.getElementById(prefix+"LoginPassword").value;
-
-  const button = event.target.querySelector("button");
-  const old = button.textContent;
-
-  button.disabled = true;
-  button.textContent = "Please wait...";
-
+  const prefix=role==="passenger"?"p":role==="driver"?"d":"a";
+  const email=document.getElementById(prefix+"LoginEmail").value.trim();
+  const password=document.getElementById(prefix+"LoginPassword").value;
+  const button=event.target.querySelector("button");
+  const old=button.textContent;
+  button.disabled=true;
+  button.textContent="Please wait...";
   try {
-    const {data,error} = await supabaseClient.auth.signInWithPassword({
-      email,password
-    });
-
-    if (error) throw error;
-
-    const user = data.user;
-
-    if (role === "admin") {
-      if (email.toLowerCase() !== ADMIN_EMAIL ||
-          user.app_metadata?.role !== "admin") {
+    const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+    if(error)throw error;
+    const user=data.user;
+    if(role==="admin") {
+      if(email.toLowerCase()!==ADMIN_EMAIL||
+         user.app_metadata?.role!=="admin") {
         await supabaseClient.auth.signOut();
-        throw new Error("This account does not have administrator permission. Check the admin SQL setup.");
+        throw new Error("This account does not have administrator permission.");
       }
-
       await loadAdmin();
       return;
     }
-
-    const {data:profile,error:profileError} = await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq("id",user.id)
-      .single();
-
-    if (profileError) throw profileError;
-
-    if (profile.role !== role) {
+    const {data:profile,error:profileError}=await supabaseClient
+      .from("profiles").select("*").eq("id",user.id).single();
+    if(profileError)throw profileError;
+    if(profile.role!==role) {
       await supabaseClient.auth.signOut();
       throw new Error("This account is not registered as a "+role+".");
     }
-
-    if (role === "passenger") {
+    if(role==="passenger") {
       dashboard("pDash");
-
-      document.getElementById("pWelcome").textContent =
-        "Welcome, "+(profile.full_name || "Passenger");
-
+      document.getElementById("pWelcome").textContent=
+        "Welcome, "+(profile.full_name||"Passenger");
       toggleSchedule();
       calculateRideFare();
       await loadPassengerBookings();
-
     } else {
       dashboard("dDash");
-
-      document.getElementById("dWelcome").textContent =
-        "Welcome, "+(profile.full_name || "Driver");
-
-      const status = ["pending","approved","rejected"].includes(
-        profile.approval_status
-      ) ? profile.approval_status : "pending";
-
-      const statusBox = document.getElementById("dStatus");
-      statusBox.replaceChildren();
-
-      const line = document.createElement("p");
-      line.append("Application status:  ");
-
-      const pill = document.createElement("span");
-      pill.className = "pill "+status;
-      pill.textContent = status.toUpperCase();
-
-      line.appendChild(pill);
-
-      const description = document.createElement("p");
-      description.textContent =
-        status === "approved"
-        ? "Your application is approved. Ride dispatch will be enabled after the dispatch system is developed."
-        : status === "rejected"
-        ? "Your application was rejected. Please contact support."
-        : "Your application is awaiting admin review. You cannot accept rides yet.";
-
-      statusBox.append(line,description);
-
-      document.getElementById("dVehicleInfo").textContent =
-        profile.vehicle_model || "Not provided";
-
-      document.getElementById("dCategoryInfo").textContent =
-        profile.vehicle_category || "Not provided";
-
-      document.getElementById("dPlateInfo").textContent =
-        profile.vehicle_registration || "Not provided";
-    }
-
+      document.getElementById("dWelcome").textContent=
+        "Welcome, "+(profile.full_name||"Driver");
+      renderDriverProfile(profile);
+      await loadDriverBookings();
+      }
   } catch(error) {
     showMessage(prefix+"LoginMsg",error.message,"error");
   } finally {
-    button.disabled = false;
-    button.textContent = old;
+    button.disabled=false;
+    button.textContent=old;
   }
 }
+  function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, function(char) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[char];
+  });
+}
 
-/* PASSENGER BOOKING */
+function money(value) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD"
+  }).format(Number(value || 0));
+}
+
+function formatDate(value) {
+  if (!value) return "Not specified";
+  return new Date(value).toLocaleString("en-US", {
+    dateStyle: "medium",
+    timeStyle: "short"
+  });
+}
+
+function statusBadge(status) {
+  const safe = escapeHtml(status || "pending");
+  return `<span class="status-badge">${safe.replaceAll("_", " ")}</span>`;
+}
+
 function toggleSchedule() {
-  const scheduled =
-    document.getElementById("rideTiming").value === "scheduled";
-  document.getElementById("scheduleBox").classList.toggle(
-    "hidden",!scheduled
-  );
+  const timing = document.getElementById("bookingTiming")?.value;
+  const scheduleBox = document.getElementById("scheduleBox");
 
-  document.getElementById("rideDate").required = scheduled;
+  if (scheduleBox) {
+    scheduleBox.style.display = timing === "scheduled" ? "block" : "none";
+  }
+
+  const dateInput = document.getElementById("rideDate");
+  if (dateInput) {
+    const minimum = new Date(Date.now() + 30 * 60000);
+    const localMinimum = new Date(
+      minimum.getTime() - minimum.getTimezoneOffset() * 60000
+    ).toISOString().slice(0, 16);
+
+    dateInput.min = localMinimum;
+  }
+
+  calculateRideFare();
 }
 
 function calculateRideFare() {
-  const miles = Number(document.getElementById("rideMiles").value) || 0;
-  const minutes = Number(document.getElementById("rideMinutes").value) || 0;
+  const distance = Number(document.getElementById("distanceMiles")?.value || 0);
+  const duration = Number(document.getElementById("durationMinutes")?.value || 0);
+  const output = document.getElementById("fareEstimate");
 
-  const distance = miles * PRICE_PER_MILE;
-  const time = minutes * PRICE_PER_MINUTE;
-  const total = BASE_FARE + distance + time;
+  const estimatedFare = 10 + (distance * 2) + (duration * 0.5);
 
-  document.getElementById("distanceCost").textContent =
-    "Distance fare: $" + distance.toFixed(2);
-
-  document.getElementById("timeCost").textContent =
-    "Time fare: $" + time.toFixed(2);
-
-  document.getElementById("fareTotal").textContent =
-    "$" + total.toFixed(2) + " USD (provisional estimate)";
+  if (output) {
+    output.textContent = money(estimatedFare);
+  }
 }
 
 async function createBooking(event) {
   event.preventDefault();
 
-  const button = document.getElementById("bookRideButton");
-  const oldText = button.textContent;
+  if (!currentUser) {
+    showMessage("Please log in before booking a ride.", "error");
+    return;
+  }
 
-  button.disabled = true;
-  button.textContent = "Submitting request...";
+  const button = event.submitter;
+  if (button) {
+    button.disabled = true;
+    button.textContent = "Submitting...";
+  }
+
   try {
-    const miles = Number(document.getElementById("rideMiles").value);
-    const minutes = Number(document.getElementById("rideMinutes").value);
-    const timing = document.getElementById("rideTiming").value;
+    const pickup = document.getElementById("pickupAddress")?.value.trim();
+    const dropoff = document.getElementById("dropoffAddress")?.value.trim();
+    const timing = document.getElementById("bookingTiming")?.value || "now";
+    const vehicle = document.getElementById("vehicleCategory")?.value;
+    const rideType = document.getElementById("rideType")?.value || "city";
+    const distance = Number(document.getElementById("distanceMiles")?.value || 0);
+    const duration = Number(document.getElementById("durationMinutes")?.value || 0);
 
-    if (!Number.isFinite(miles) || miles <= 0 || miles > 1000 ||
-        !Number.isInteger(minutes) || minutes <= 0 || minutes > 2000) {
-      throw new Error("Enter a valid estimated distance and travel time.");
+    if (!pickup || !dropoff) {
+      throw new Error("Please enter both pickup and drop-off addresses.");
     }
 
-    let pickupDate;
+    if (!["city", "airport", "long_distance"].includes(rideType)) {
+      throw new Error("Please select a valid ride type.");
+    }
+
+    if (!vehicle) {
+      throw new Error("Please select a vehicle category.");
+    }
+
+    if (distance <= 0 || duration <= 0) {
+      throw new Error("Please enter a valid estimated distance and duration.");
+    }
+
+    let pickupDateTime;
 
     if (timing === "scheduled") {
-      const value = document.getElementById("rideDate").value;
+      const selectedDate = document.getElementById("rideDate")?.value;
 
-      if (!value) {
-        throw new Error("Please select a scheduled pickup date and time.");
+      if (!selectedDate) {
+        throw new Error("Please select your scheduled pickup date and time.");
       }
 
-      pickupDate = new Date(value);
+      pickupDateTime = new Date(selectedDate).toISOString();
+
+      if (new Date(pickupDateTime).getTime() < Date.now() + 30 * 60000) {
+        throw new Error("Scheduled rides must be booked at least 30 minutes ahead.");
+      }
     } else {
-      pickupDate = new Date(Date.now() + 15 * 60 * 1000);
+      pickupDateTime = new Date(Date.now() + 15 * 60000).toISOString();
     }
 
-    if (Number.isNaN(pickupDate.getTime()) || pickupDate <= new Date()) {
-      throw new Error("Pickup time must be in the future.");
-    }
-
-    const pickup = document.getElementById("ridePickup").value.trim();
-    const dropoff = document.getElementById("rideDropoff").value.trim();
-    const vehicle = document.getElementById("rideVehicle").value;
-
-    const {data,error} = await supabaseClient.rpc(
+    const { data, error } = await supabaseClient.rpc(
       "create_passenger_booking",
       {
-        p_pickup:pickup,
-        p_dropoff:dropoff,
-        p_pickup_datetime:pickupDate.toISOString(),
-        p_booking_timing:timing,
-        p_vehicle_category:vehicle,
-        p_distance_miles:miles,
-        p_duration_minutes:minutes
+        p_pickup: pickup,
+        p_dropoff: dropoff,
+        p_pickup_datetime: pickupDateTime,
+        p_booking_timing: timing,
+        p_vehicle_category: vehicle,
+        p_distance_miles: distance,
+        p_duration_minutes: duration,
+        p_ride_type: rideType
       }
     );
 
     if (error) throw error;
 
-    showMessage(
-      "bookingMsg",
-      "Your ride request has been submitted. Reference: "+data+
-      ". This is a request, not a confirmed driver assignment.",
-      "success"
-    );
+    showMessage("Your ride request has been submitted successfully.", "success");
 
-    event.target.reset();
+    document.getElementById("bookingForm")?.reset();
     toggleSchedule();
     calculateRideFare();
-
     await loadPassengerBookings();
 
-  } catch(error) {
-    showMessage("bookingMsg",error.message,"error");
+  } catch (error) {
+    showMessage(error.message || "Unable to submit your booking.", "error");
   } finally {
-    button.disabled = false;
-    button.textContent = oldText;
+    if (button) {
+      button.disabled = false;
+      button.textContent = "Book Your Ride";
+    }
   }
 }
 
-/* PASSENGER BOOKING HISTORY */
 async function loadPassengerBookings() {
-  const list = document.getElementById("passengerBookingList");
-  if (!list) return;
+  const container = document.getElementById("passengerBookings");
+  if (!container || !currentUser) return;
 
-  list.textContent = "Loading bookings...";
+  container.innerHTML = "<p>Loading your bookings...</p>";
 
-  try {
-    const {data:{user},error:userError} =
-      await supabaseClient.auth.getUser();
-
-    if (userError || !user) {
-      throw new Error("Please sign in again.");
-    }
-
-    const {data,error} = await supabaseClient
-      .from("bookings")
-      .select("id,pickup_address,dropoff_address,pickup_datetime,vehicle_category,total_fare,currency,booking_status")
-      .eq("passenger_id",user.id)
-      .order("created_at",{ascending:false});
-
-    if (error) throw error;
-
-    list.replaceChildren();
-
-    if (!data || data.length === 0) {
-      const empty = document.createElement("div");
-      empty.className = "empty";
-      empty.textContent = "You have not submitted any ride requests yet.";
-      list.appendChild(empty);
-      return;
-    }
-
-    data.forEach(booking => {
-      const card = document.createElement("div");
-      card.className = "row";
-
-      const info = document.createElement("div");
-      info.className = "info";
-
-      const title = document.createElement("strong");
-      title.textContent =
-        booking.pickup_address+" → "+booking.dropoff_address;
-
-      const detail = document.createElement("small");
-      detail.textContent =
-        booking.vehicle_category+" | "+
-        new Date(booking.pickup_datetime).toLocaleString();
-
-      const price = document.createElement("small");
-      price.textContent =
-        "Provisional fare: $"+
-        Number(booking.total_fare).toFixed(2)+" "+booking.currency;
-
-      const status = document.createElement("span");
-      status.className = "pill";
-      status.textContent =
-        (booking.booking_status || "pending").toUpperCase();
-
-      info.append(title,detail,price,status);
-      card.appendChild(info);
-      list.appendChild(card);
-    });
-
-  } catch(error) {
-    list.textContent = error.message;
-  }
-}
-
-/* ADMIN DRIVER MANAGEMENT */
-async function loadAdmin() {
-  const {data:{user},error:userError} =
-    await supabaseClient.auth.getUser();
-
-  if (userError || !user ||
-      user.app_metadata?.role !== "admin" ||
-      user.email?.toLowerCase() !== ADMIN_EMAIL) {
-    throw new Error("Admin permission required. Please sign in again.");
-  }
-
-  dashboard("aDash");
-
-  const list = document.getElementById("driverList");
-  list.textContent = "Loading applications...";
-
-  const {data,error} = await supabaseClient
-    .from("profiles")
-    .select("id,full_name,phone,role,approval_status,vehicle_model,vehicle_category,vehicle_registration,created_at")
-    .eq("role","driver")
-    .order("created_at",{ascending:false});
+  const { data, error } = await supabaseClient
+    .from("bookings")
+    .select("*")
+    .order("created_at", { ascending: false });
 
   if (error) {
-    showMessage("aMsg",error.message,"error");
+    container.innerHTML = "<p>Unable to load bookings.</p>";
     return;
   }
-
-  list.replaceChildren();
 
   if (!data || data.length === 0) {
-    const empty = document.createElement("div");
-    empty.className = "empty";
-    empty.textContent = "No driver applications found.";
-    list.appendChild(empty);
+    container.innerHTML = "<p>You have no bookings yet.</p>";
     return;
   }
 
-  data.forEach(driver => {
-    const row = document.createElement("div");
-    row.className = "row";
-
-    const info = document.createElement("div");
-    info.className = "info";
-
-    const name = document.createElement("strong");
-    name.textContent = driver.full_name || "Driver";
-
-    const detail = document.createElement("small");
-    detail.textContent =
-      "Phone: "+(driver.phone || "—")+
-      " | Vehicle: "+(driver.vehicle_model || "—")+
-      " | Category: "+(driver.vehicle_category || "—")+
-      " | Plate: "+(driver.vehicle_registration || "—");
-
-    const status = ["pending","approved","rejected"].includes(
-      driver.approval_status
-    ) ? driver.approval_status : "pending";
-
-    const pill = document.createElement("span");
-    pill.className = "pill "+status;
-    pill.textContent = status.toUpperCase();
-
-    info.append(name,detail,pill);
-
-    const actions = document.createElement("div");
-    actions.className = "actions";
-
-    const approve = document.createElement("button");
-    approve.className = "small";
-    approve.textContent = "Approve";
-    approve.disabled = status === "approved";
-    approve.onclick = () => setApproval(driver.id,"approved");
-
-    const reject = document.createElement("button");
-    reject.className = "small danger";
-    reject.textContent = "Reject";
-    reject.disabled = status === "rejected";
-    reject.onclick = () => setApproval(driver.id,"rejected");
-
-    actions.append(approve,reject);
-    row.append(info,actions);
-    list.appendChild(row);
-  });
+  container.innerHTML = data.map(booking => `
+    <div class="booking-card">
+      <div class="card-heading">
+        <strong>${escapeHtml(booking.ride_type || "city").replaceAll("_", " ")} ride</strong>
+        ${statusBadge(booking.booking_status)}
+      </div>
+      <p><strong>Pickup:</strong> ${escapeHtml(booking.pickup_address)}</p>
+      <p><strong>Drop-off:</strong> ${escapeHtml(booking.dropoff_address)}</p>
+      <p><strong>Vehicle:</strong> ${escapeHtml(booking.vehicle_category)}</p>
+      <p><strong>Pickup time:</strong> ${formatDate(booking.pickup_datetime)}</p>
+      <p><strong>Booking type:</strong> ${escapeHtml(booking.booking_timing)}</p>
+      <p><strong>Estimated fare:</strong> ${money(booking.total_fare)}</p>
+    </div>
+  `).join("");
 }
 
-async function setApproval(driverId,status) {
-  try {
-    const {error} = await supabaseClient.rpc("set_driver_approval",{
-      p_driver_id:driverId,
-      p_status:status
-    });
-    if (error) throw error;
+function renderDriverProfile(profile) {
+  const container = document.getElementById("driverProfile");
+  if (!container) return;
 
-    showMessage(
-      "aMsg",
-      "Driver application updated: "+status.toUpperCase(),
-      "success"
-    );
+  const status = profile.approval_status || "pending";
 
-    await loadAdmin();
+  container.innerHTML = `
+    <div class="booking-card">
+      <h3>Driver Application</h3>
+      <p><strong>Status:</strong> ${statusBadge(status)}</p>
+      <p><strong>Vehicle:</strong> ${escapeHtml(profile.vehicle_make_model || profile.vehicle_model || "Not provided")}</p>
+      <p><strong>Category:</strong> ${escapeHtml(profile.vehicle_category || "Not provided")}</p>
+      <p><strong>Registration:</strong> ${escapeHtml(profile.vehicle_registration || "Not provided")}</p>
+      ${
+        status === "pending"
+          ? "<p>Your application is waiting for admin approval.</p>"
+          : status === "rejected"
+            ? "<p>Your application was not approved. Please contact support.</p>"
+            : "<p>Your driver account is approved. You can now access available rides.</p>"
+      }
+    </div>
+  `;
 
-  } catch(error) {
-    showMessage("aMsg",error.message,"error");
+  const dispatch = document.getElementById("driverDispatch");
+  if (dispatch) {
+    dispatch.style.display = status === "approved" ? "block" : "none";
   }
 }
 
-/* LOGOUT */
-async function logout() {
-  const {error} = await supabaseClient.auth.signOut();
+async function loadDriverBookings() {
+  const container = document.getElementById("driverBookings");
+  if (!container || !currentUser) return;
+
+  container.innerHTML = "<p>Loading available rides...</p>";
+
+  const { data: profile, error: profileError } = await supabaseClient
+    .from("profiles")
+    .select("*")
+    .eq("id", currentUser.id)
+    .single();
+
+  if (profileError || !profile) {
+    container.innerHTML = "<p>Unable to load driver profile.</p>";
+    return;
+  }
+
+  renderDriverProfile(profile);
+
+  if (profile.approval_status !== "approved") {
+    container.innerHTML = "<p>Ride dispatch will become available after approval.</p>";
+    return;
+  }
+
+  const { data, error } = await supabaseClient.rpc("get_driver_bookings");
 
   if (error) {
-    alert(error.message);
+    container.innerHTML = `<p>${escapeHtml(error.message)}</p>`;
     return;
   }
 
-  backHome();
+  if (!data || data.length === 0) {
+    container.innerHTML = "<p>No available rides at the moment.</p>";
+    return;
+  }
+
+  container.innerHTML = data.map(booking => {
+    let action = "";
+
+    if (booking.booking_status === "pending" && !booking.driver_id) {
+      action = `<button onclick="acceptRide('${escapeHtml(booking.id)}')">Accept Ride</button>`;
+    } else if (booking.booking_status === "assigned") {
+      action = `<button onclick="startRide('${escapeHtml(booking.id)}')">Start Ride</button>`;
+    } else if (booking.booking_status === "in_progress") {
+      action = `<button onclick="completeRide('${escapeHtml(booking.id)}')">Complete Ride</button>`;
+    }
+
+    return `
+      <div class="booking-card">
+        <div class="card-heading">
+          <strong>${escapeHtml(booking.ride_type || "city").replaceAll("_", " ")} ride</strong>
+          ${statusBadge(booking.booking_status)}
+        </div>
+        <p><strong>Pickup:</strong> ${escapeHtml(booking.pickup_address)}</p>
+        <p><strong>Drop-off:</strong> ${escapeHtml(booking.dropoff_address)}</p>
+        <p><strong>Vehicle requested:</strong> ${escapeHtml(booking.vehicle_category)}</p>
+        <p><strong>Pickup time:</strong> ${formatDate(booking.pickup_datetime)}</p>
+        <p><strong>Estimated fare:</strong> ${money(booking.total_fare)}</p>
+        ${action}
+      </div>
+    `;
+  }).join("");
 }
 
-/* PASSWORD RECOVERY EVENT */
-supabaseClient.auth.onAuthStateChange((event,session) => {
+async function driverAction(rpcName, bookingId, successMessage) {
+  try {
+    const { error } = await supabaseClient.rpc(rpcName, {
+      p_booking_id: bookingId
+    });
+
+    if (error) throw error;
+
+    showMessage(successMessage, "success");
+    await loadDriverBookings();
+
+  } catch (error) {
+    showMessage(error.message || "Unable to update this ride.", "error");
+  }
+}
+
+async function acceptRide(id) {
+  await driverAction("accept_booking", id, "Ride accepted successfully.");
+}
+
+async function startRide(id) {
+  await driverAction("start_booking", id, "Ride started.");
+}
+
+async function completeRide(id) {
+  await driverAction("complete_booking", id, "Ride marked as completed.");
+}
+
+async function loadAdmin() {
+  const driverContainer = document.getElementById("adminDrivers");
+  if (driverContainer) {
+    driverContainer.innerHTML = "<p>Loading driver applications...</p>";
+  }
+
+  await loadAdminDrivers();
+  await loadAdminBookings();
+}
+
+async function loadAdminDrivers() {
+  const container = document.getElementById("adminDrivers");
+  if (!container) return;
+
+  const { data, error } = await supabaseClient
+    .from("profiles")
+    .select("*")
+    .eq("role", "driver")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    container.innerHTML = `<p>${escapeHtml(error.message)}</p>`;
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    container.innerHTML = "<p>No driver applications found.</p>";
+    return;
+  }
+
+  container.innerHTML = data.map(driver => `
+    <div class="booking-card">
+      <h3>${escapeHtml(driver.full_name || "Driver")}</h3>
+      <p><strong>Email:</strong> ${escapeHtml(driver.email || "Not available")}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(driver.phone || "Not provided")}</p>
+      <p><strong>Vehicle:</strong> ${escapeHtml(driver.vehicle_make_model || driver.vehicle_model || "Not provided")}</p>
+      <p><strong>Category:</strong> ${escapeHtml(driver.vehicle_category || "Not provided")}</p>
+      <p><strong>Registration:</strong> ${escapeHtml(driver.vehicle_registration || "Not provided")}</p>
+      <p><strong>Approval:</strong> ${statusBadge(driver.approval_status)}</p>
+      <div class="admin-actions">
+        <button onclick="updateDriverApproval('${escapeHtml(driver.id)}','approved')">Approve</button>
+        <button class="secondary-button" onclick="updateDriverApproval('${escapeHtml(driver.id)}','rejected')">Reject</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+async function updateDriverApproval(driverId, status) {
+  try {
+    const { error } = await supabaseClient.rpc("set_driver_approval", {
+      p_driver_id: driverId,
+      p_status: status
+    });
+
+    if (error) throw error;
+
+    showMessage("Driver application updated.", "success");
+    await loadAdminDrivers();
+    await loadAdminBookings();
+
+  } catch (error) {
+    showMessage(error.message || "Unable to update driver application.", "error");
+  }
+}
+
+async function loadAdminBookings() {
+  const container = document.getElementById("adminBookings");
+  if (!container) return;
+
+  container.innerHTML = "<p>Loading all bookings...</p>";
+
+  const { data: bookings, error } = await supabaseClient.rpc("get_admin_bookings");
+
+  if (error) {
+    container.innerHTML = `<p>${escapeHtml(error.message)}</p>`;
+    return;
+  }
+
+  const { data: drivers, error: driverError } = await supabaseClient
+    .from("profiles")
+    .select("id, full_name, vehicle_make_model, vehicle_model")
+    .eq("role", "driver")
+    .eq("approval_status", "approved");
+
+  if (driverError) {
+    container.innerHTML = `<p>${escapeHtml(driverError.message)}</p>`;
+    return;
+  }
+
+  if (!bookings || bookings.length === 0) {
+    container.innerHTML = "<p>No bookings found.</p>";
+    return;
+  }
+
+  const statuses = [
+    "pending",
+    "confirmed",
+    "assigned",
+    "in_progress",
+    "completed",
+    "cancelled"
+  ];
+
+  container.innerHTML = bookings.map(booking => {
+    const driverOptions = (drivers || []).map(driver => `
+      <option value="${escapeHtml(driver.id)}"
+        ${booking.driver_id === driver.id ? "selected" : ""}>
+        ${escapeHtml(driver.full_name || driver.vehicle_make_model || driver.vehicle_model || "Approved driver")}
+      </option>
+    `).join("");
+
+    const statusOptions = statuses.map(status => `
+      <option value="${status}"
+        ${booking.booking_status === status ? "selected" : ""}>
+        ${status.replaceAll("_", " ")}
+      </option>
+    `).join("");
+
+    return `
+      <div class="booking-card">
+        <div class="card-heading">
+          <strong>Booking ${escapeHtml(booking.id.slice(0, 8))}</strong>
+          ${statusBadge(booking.booking_status)}
+        </div>
+        <p><strong>Passenger ID:</strong> ${escapeHtml(booking.passenger_id)}</p>
+        <p><strong>Ride:</strong> ${escapeHtml(booking.ride_type || "city").replaceAll("_", " ")}</p>
+        <p><strong>Pickup:</strong> ${escapeHtml(booking.pickup_address)}</p>
+        <p><strong>Drop-off:</strong> ${escapeHtml(booking.dropoff_address)}</p>
+        <p><strong>Pickup time:</strong> ${formatDate(booking.pickup_datetime)}</p>
+        <p><strong>Vehicle:</strong> ${escapeHtml(booking.vehicle_category)}</p>
+        <p><strong>Fare:</strong> ${money(booking.total_fare)}</p>
+
+        <label>Assign approved driver</label>
+        <select id="driver-${escapeHtml(booking.id)}">
+          <option value="">Select a driver</option>
+          ${driverOptions}
+        </select>
+        <button onclick="assignAdminBooking('${escapeHtml(booking.id)}')">
+          Assign Driver
+        </button>
+
+        <label>Update booking status</label>
+        <select id="status-${escapeHtml(booking.id)}">
+          ${statusOptions}
+        </select>
+        <button class="secondary-button"
+          onclick="updateAdminBookingStatus('${escapeHtml(booking.id)}')">
+          Update Status
+        </button>
+      </div>
+    `;
+  }).join("");
+}
+
+async function assignAdminBooking(bookingId) {
+  const driverSelect = document.getElementById(`driver-${bookingId}`);
+  const driverId = driverSelect?.value;
+
+  if (!driverId) {
+    showMessage("Please select an approved driver first.", "error");
+    return;
+  }
+
+  try {
+    const { error } = await supabaseClient.rpc("admin_assign_booking", {
+      p_booking_id: bookingId,
+      p_driver_id: driverId
+    });
+
+    if (error) throw error;
+
+    showMessage("Driver assigned successfully.", "success");
+    await loadAdminBookings();
+
+  } catch (error) {
+    showMessage(error.message || "Unable to assign driver.", "error");
+  }
+}
+
+async function updateAdminBookingStatus(bookingId) {
+  const status = document.getElementById(`status-${bookingId}`)?.value;
+
+  if (!status) {
+    showMessage("Please select a booking status.", "error");
+    return;
+  }
+
+  try {
+    const { error } = await supabaseClient.rpc("admin_update_booking_status", {
+      p_booking_id: bookingId,
+      p_status: status
+    });
+
+    if (error) throw error;
+
+    showMessage("Booking status updated.", "success");
+    await loadAdminBookings();
+
+  } catch (error) {
+    showMessage(error.message || "Unable to update booking status.", "error");
+  }
+}
+
+async function logout() {
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) {
+    showMessage(error.message, "error");
+    return;
+  }
+
+  currentUser = null;
+  backHome();
+  showMessage("You have been logged out.", "success");
+}
+
+// Password recovery: Supabase sends this event after a valid recovery link.
+supabaseClient.auth.onAuthStateChange((event, session) => {
   if (event === "PASSWORD_RECOVERY") {
     showForm("resetForm");
   }
 });
 
-/* INITIAL PAGE LOAD */
 async function initialiseApp() {
-  const params = new URLSearchParams(window.location.search);
-  const hash = new URLSearchParams(
-    window.location.hash.replace(/^#/,"")
-  );
+  const { data, error } = await supabaseClient.auth.getSession();
 
-  if (params.get("type") === "recovery" ||
-      hash.get("type") === "recovery") {
+  if (error) {
+    console.error("Session check:", error.message);
+    return;
+  }
+
+  const queryParams = new URLSearchParams(window.location.search);
+  const recoveryInHash = window.location.hash.includes("type=recovery");
+
+  if (queryParams.get("type") === "recovery" || recoveryInHash) {
     showForm("resetForm");
-    return;
-  }
-
-  const {data,error} = await supabaseClient.auth.getSession();
-
-  if (error || !data.session) return;
-
-  const user = data.session.user;
-
-  if (user.app_metadata?.role === "admin" &&
-      user.email?.toLowerCase() === ADMIN_EMAIL) {
-    try {
-      await loadAdmin();
-    } catch(error) {
-      console.error(error);
-    }
-    return;
-  }
-
-  const {data:profile,error:profileError} = await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id",user.id)
-    .maybeSingle();
-
-  if (profileError || !profile) return;
-
-  if (profile.role === "passenger") {
-    dashboard("pDash");
-    document.getElementById("pWelcome").textContent =
-      "Welcome, "+(profile.full_name || "Passenger");
-
-    toggleSchedule();
-    calculateRideFare();
-    await loadPassengerBookings();
-  }
-
-  if (profile.role === "driver") {
-    dashboard("dDash");
-    document.getElementById("dWelcome").textContent =
-      "Welcome, "+(profile.full_name || "Driver");
-
-    const status = profile.approval_status || "pending";
-    const statusBox = document.getElementById("dStatus");
-
-    statusBox.textContent = "Application status: "+status.toUpperCase();
-
-    document.getElementById("dVehicleInfo").textContent =
-      profile.vehicle_model || "Not provided";
-    document.getElementById("dCategoryInfo").textContent =
-      profile.vehicle_category || "Not provided";
-    document.getElementById("dPlateInfo").textContent =
-      profile.vehicle_registration || "Not provided";
   }
 }
 
 initialiseApp();
 </script>
-
 </body>
 </html>
