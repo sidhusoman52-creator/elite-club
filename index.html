@@ -604,7 +604,8 @@ async function login(event,role) {
   try {
     const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
     if(error)throw error;
-    const user=data.user;
+    const user = data.user;
+currentUser = user;
     if(role==="admin") {
       if(email.toLowerCase()!==ADMIN_EMAIL||
          user.app_metadata?.role!=="admin") {
